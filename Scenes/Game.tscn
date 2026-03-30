@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b87iqj14agf4f"]
+
+[ext_resource type="PackedScene" uid="uid://xlwffpmjt6iv" path="res://Scenes/Player.tscn" id="1_y700s"]
+[ext_resource type="PackedScene" uid="uid://bv81bcnvabuc5" path="res://Scenes/Enemy.tscn" id="2_1lyfm"]
+
+[node name="Node2D" type="Control" unique_id=132443385]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Player" parent="." unique_id=1634487443 instance=ExtResource("1_y700s")]
+position = Vector2(264, 117)
+
+[node name="Enemy" parent="." unique_id=2054349335 instance=ExtResource("2_1lyfm")]
+position = Vector2(495, 94)
