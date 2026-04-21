@@ -5,7 +5,9 @@ var focusSpeed = 175
 
 var canshoot = true
 
-var Bullet = preload("res://Scenes/Bullet.tscn")
+var Player_bullet = preload("res://Scenes/Playerbullet.tscn") # Bala do jogador
+
+@onready var player_bullet_spawnpos = $Spawnpos # Posição aonde as balas do jogador surgem
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -46,4 +48,11 @@ func _process(delta):
 
 #Método para spawnar as balas na posição do jogador
 func shoot():
-	var bullet = Bullet.instantiate()
+	var bullet = Player_bullet.instantiate() #Criar uma nova instância de player bullet e armazenar na variável local
+	bullet.position = player_bullet_spawnpos.global_position #Setar a posição da instância como a mesma de spawnpos
+	get_tree().current_scene.add_child(bullet) #Adcionar novo nó com a instância da bala do jogador
+	
+	$Shootspeed.start() #Iniciar timer Shootspeed
+	canshoot = false #Fazer com que o jogador não possa atirar até o timer Shootspeed acabar
+	
+	
