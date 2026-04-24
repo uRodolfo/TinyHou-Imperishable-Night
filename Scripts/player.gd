@@ -1,31 +1,33 @@
 extends CharacterBody2D
 
-var speed = 300
-var focusSpeed = 175
+var speed = 300                  #Velocidade atual do jogador
+@export var baseSpeed = 300      #Velocidade Base do jogador
+@export var focusSpeedMultiplier = 0.5     #Multiplicador da velocidade Focus do jogador (Shift)
 
-var canshoot = true
+var canshoot = true              #True para poder atirar/Falso para não poder atirar
 
 var Player_bullet = preload("res://Scenes/Playerbullet.tscn") # Bala do jogador
 
 @onready var player_bullet_spawnpos = $Spawnpos # Posição aonde as balas do jogador surgem
+@onready var _animated_sprite = $AnimatedSprite2D #Spritesheet animada do jogador
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
 
 	# Movimentação
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("Move_Right"):
 		direction.x += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("Move_Left"):
 		direction.x -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("Move_Down"):
 		direction.y += 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("Move_Up"):
 		direction.y -= 1
 
-	if Input.is_key_pressed(KEY_SHIFT):
-		speed = focusSpeed
+	if Input.is_action_pressed("Focus"):
+		speed = baseSpeed * focusSpeedMultiplier
 	else:
-		speed = 300
+		speed = baseSpeed
 
 	velocity = direction.normalized() * speed
 	var collision = move_and_collide(velocity * delta)
@@ -35,16 +37,31 @@ func _physics_process(delta):
 		var collider = collision.get_collider()
 		if collider.name == "Enemy" or collider.name == "Bullet":
 			print("Hit com:", collider.name)
-			
 
+func _process(delta):
+	#Tiros do jogador
+	if Input.is_action_pressed("Shoot") and canshoot:	#Detectar input para atirar balas
+		shoot()
+	
+	#Animação do player
+	
+	#Animação Idle
+	if velocity == Vector2.ZERO:
+		_animated_sprite.play("Idle")
+	else:
+		#Animação esquerda e direita
+		if velocity.x != 0:
+			_animated_sprite.play("Moving_Left")
+		
+			#Flipar animação se for para a direita
+			if velocity.x > 0:
+				_animated_sprite.flip_h = true
+			else:
+				_animated_sprite.flip_h = false
 
 #Timer para o jogador não conseguir spammar tiros além do limite
 func _on_shootspeed_timeout():
 	canshoot = true
-
-func _process(delta):
-	if Input.is_action_pressed("Shoot") and canshoot:	#Detectar input para atirar balas
-		shoot()
 
 #Método para spawnar as balas na posição do jogador
 func shoot():
