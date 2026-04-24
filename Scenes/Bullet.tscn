@@ -12,7 +12,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Purple",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -20,7 +20,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Red",
-"speed": 5.0
+"speed": 0.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hunpp"]
@@ -33,7 +33,7 @@ speed = 80
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1186096413]
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_pypll")
-animation = &"Purple"
+animation = &"Red"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1493594505]
 rect = Rect2(-5, -5, 10, 10)
