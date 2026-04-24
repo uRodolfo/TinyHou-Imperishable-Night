@@ -25,11 +25,15 @@ window/size/viewport_width=256
 window/size/viewport_height=240
 window/size/window_width_override=1690
 window/size/window_height_override=950
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="Hello Godot"
+
+[global_group]
+
+Enemy_Bullets=""
 
 [input]
 

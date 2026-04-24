@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bkwun6hm6eecr" path="res://Scripts/player.gd" id="1_yvgu0"]
 [ext_resource type="Texture2D" uid="uid://cvqeyy7kg5nur" path="res://Sprites/Player/Reimu.png" id="2_kyqiw"]
+[ext_resource type="Script" uid="uid://myetvtfb1rxr" path="res://Scripts/player_shooting.gd" id="3_gntrk"]
+[ext_resource type="Script" uid="uid://b6j556kixxgjp" path="res://Scripts/player_animation.gd" id="4_dewec"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
 atlas = ExtResource("2_kyqiw")
@@ -143,25 +145,36 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fnolj"]
-radius = 3.0
+radius = 2.0
 
 [node name="Player" type="CharacterBody2D" unique_id=579317780]
 script = ExtResource("1_yvgu0")
-baseSpeed = 200
+baseSpeed = 110
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2101067525]
+[node name="Player_Animation" type="Node2D" parent="." unique_id=1677435510]
+script = ExtResource("4_dewec")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player_Animation" unique_id=2101067525]
 sprite_frames = SubResource("SpriteFrames_miouo")
 animation = &"Moving_Left"
-frame_progress = 0.06396952
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1405953714]
 modulate = Color(0, 0, 0, 1)
 shape = SubResource("CircleShape2D_fnolj")
 
-[node name="Spawnpos" type="Marker2D" parent="." unique_id=1092731249]
+[node name="Player_Shooting" type="Node2D" parent="." unique_id=1455907652]
+script = ExtResource("3_gntrk")
+
+[node name="Shootspeed" type="Timer" parent="Player_Shooting" unique_id=1397607685]
+wait_time = 0.1
+one_shot = true
+
+[node name="Spawnpos" type="Marker2D" parent="Player_Shooting" unique_id=1092731249]
 position = Vector2(0, -12)
 
-[node name="Shootspeed" type="Timer" parent="." unique_id=1397607685]
-wait_time = 0.1
+[node name="Bomb_double_tap_interval" type="Timer" parent="." unique_id=1402923461]
+wait_time = 0.5
+one_shot = true
 
-[connection signal="timeout" from="Shootspeed" to="." method="_on_shootspeed_timeout"]
+[connection signal="timeout" from="Player_Shooting/Shootspeed" to="Player_Shooting" method="_on_shootspeed_timeout"]
+[connection signal="timeout" from="Bomb_double_tap_interval" to="." method="_on_bomb_double_tap_interval_timeout"]
