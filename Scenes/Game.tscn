@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://xlwffpmjt6iv" path="res://Scenes/Player.tscn" id="1_y700s"]
 [ext_resource type="PackedScene" uid="uid://bv81bcnvabuc5" path="res://Scenes/Enemy.tscn" id="2_gl6un"]
+[ext_resource type="AudioStream" uid="uid://eydt6tn3a6ja" path="res://Sounds/Music/locked girl.mp3" id="3_j5yw3"]
 
 [node name="Node2D" type="Control" unique_id=132443385]
 layout_mode = 3
@@ -12,3 +13,9 @@ position = Vector2(128, 175)
 
 [node name="Enemy" parent="." unique_id=1723156014 instance=ExtResource("2_gl6un")]
 position = Vector2(130, 76)
+
+[node name="LockedGirl Soundtrack" type="AudioStreamPlayer" parent="." unique_id=166022374]
+stream = ExtResource("3_j5yw3")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

@@ -8,7 +8,7 @@ func _ready():
 
 	direction = Vector2.RIGHT.rotated(rotation)
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	# Move a bala (Node2D)
 	position += direction * speed * delta
 

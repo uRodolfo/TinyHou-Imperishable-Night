@@ -149,7 +149,7 @@ radius = 2.0
 
 [node name="Player" type="CharacterBody2D" unique_id=579317780]
 script = ExtResource("1_yvgu0")
-baseSpeed = 110
+baseSpeed = 80
 
 [node name="Player_Animation" type="Node2D" parent="." unique_id=1677435510]
 script = ExtResource("4_dewec")

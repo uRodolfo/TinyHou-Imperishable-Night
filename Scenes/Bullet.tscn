@@ -2,6 +2,26 @@
 
 [ext_resource type="Script" uid="uid://vkpe2610a55s" path="res://Scripts/Bullet.gd" id="1_4hpmf"]
 [ext_resource type="Texture2D" uid="uid://cwkh8b5d0suho" path="res://Sprites/Enemy_bullets/Purple Bullet.png" id="2_14k46"]
+[ext_resource type="Texture2D" uid="uid://cnpcoyqe2hhhh" path="res://Sprites/Enemy_bullets/Red Bullet.png" id="3_qvus8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pypll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_14k46")
+}],
+"loop": false,
+"name": &"Purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qvus8")
+}],
+"loop": false,
+"name": &"Red",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hunpp"]
 radius = 2.0
@@ -10,9 +30,10 @@ radius = 2.0
 script = ExtResource("1_4hpmf")
 speed = 80
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=619608024]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1186096413]
 rotation = 1.5707964
-texture = ExtResource("2_14k46")
+sprite_frames = SubResource("SpriteFrames_pypll")
+animation = &"Purple"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1493594505]
 rect = Rect2(-5, -5, 10, 10)
