@@ -1,6 +1,7 @@
 extends Node2D
 
 var canshoot = true              #True para poder atirar/Falso para não poder atirar
+var is_shooting = true           #Determina se o jogador está atirando ou não (toggle)
 
 var Player_bullet = preload("res://Scenes/Playerbullet.tscn") # Bala do jogador
 

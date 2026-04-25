@@ -7,8 +7,6 @@ var speed = 300                  #Velocidade atual do jogador
 @export var focusSpeed = 40     #Velocidade Focus do jogador (Shift)
 var direction = Vector2.ZERO
 
-var is_shooting = true          #Determina se o jogador está atirando ou não (toggle)
-
 #Nodes
 @onready var _player_shooting = $Player_Shooting #Lógica de tiros do jogador
 @onready var _shoot_key_interval = $Shoot_key_interval #Tempo para segurar o botão para alternar o modo de tiro
@@ -44,7 +42,7 @@ func _process(delta):
 	else:
 		speed = baseSpeed
 	
-	if is_shooting and _player_shooting.canshoot:
+	if _player_shooting.is_shooting and _player_shooting.canshoot:
 		_player_shooting.shoot()
 	
 	#Ativar bomb se apertar 2 vezes entre 0.5 segundos
@@ -56,5 +54,4 @@ func _process(delta):
 func _on_shoot_key_interval_timeout() -> void:
 	#Tiros do jogador
 	if Input.is_action_pressed("Shoot"):
-		is_shooting = !is_shooting
-		print(is_shooting)
+		_player_shooting.is_shooting = !_player_shooting.is_shooting
