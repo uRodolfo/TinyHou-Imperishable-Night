@@ -33,7 +33,7 @@ speed = 80
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1186096413]
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_pypll")
-animation = &"Red"
+animation = &"Purple"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1493594505]
 rect = Rect2(-5, -5, 10, 10)

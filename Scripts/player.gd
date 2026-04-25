@@ -5,6 +5,7 @@ class_name Player
 var speed = 300                  #Velocidade atual do jogador
 @export var baseSpeed = 300      #Velocidade Base do jogador
 @export var focusSpeedMultiplier = 0.5     #Multiplicador da velocidade Focus do jogador (Shift)
+var direction = Vector2.ZERO
 
 var shoot_key_press_count = 0    #Conta quantas vezes o botão de tiro foi apertado dentro de 0.5s
 
@@ -14,9 +15,21 @@ var shoot_key_press_count = 0    #Conta quantas vezes o botão de tiro foi apert
 
 
 func _physics_process(delta):
-	var direction = Vector2.ZERO
+	
 
+	velocity = direction.normalized() * speed
+	var collision = move_and_collide(velocity * delta)
+
+	# Verifica colisão
+	if collision:
+		var collider = collision.get_collider()
+		if collider.name == "Enemy" or collider.name == "Bullet":
+			print("Hit com:", collider.name)
+
+func _process(delta):
 	# Movimentação
+	direction = Vector2.ZERO
+	
 	if Input.is_action_pressed("Move_Right"):
 		direction.x += 1
 	if Input.is_action_pressed("Move_Left"):
@@ -30,17 +43,7 @@ func _physics_process(delta):
 		speed = baseSpeed * focusSpeedMultiplier
 	else:
 		speed = baseSpeed
-
-	velocity = direction.normalized() * speed
-	var collision = move_and_collide(velocity * delta)
-
-	# Verifica colisão
-	if collision:
-		var collider = collision.get_collider()
-		if collider.name == "Enemy" or collider.name == "Bullet":
-			print("Hit com:", collider.name)
-
-func _process(delta):
+	
 	#Tiros do jogador
 	if Input.is_action_pressed("Shoot") and _player_shooting.canshoot:	#Detectar input para atirar balas
 		#Atirar
