@@ -3,15 +3,15 @@ class_name Player
 
 #Player Attributes
 var speed = 300                  #Velocidade atual do jogador
-@export var baseSpeed = 300      #Velocidade Base do jogador
-@export var focusSpeedMultiplier = 0.5     #Multiplicador da velocidade Focus do jogador (Shift)
+@export var baseSpeed = 80      #Velocidade Base do jogador
+@export var focusSpeed = 40     #Velocidade Focus do jogador (Shift)
 var direction = Vector2.ZERO
 
-var shoot_key_press_count = 0    #Conta quantas vezes o botão de tiro foi apertado dentro de 0.5s
+var is_shooting = true          #Determina se o jogador está atirando ou não (toggle)
 
 #Nodes
 @onready var _player_shooting = $Player_Shooting #Lógica de tiros do jogador
-@onready var _bomb_double_tap_interval = $Bomb_double_tap_interval #Tempo entre os dois cliques de tiro para ativar o bomb
+@onready var _shoot_key_interval = $Shoot_key_interval #Tempo para segurar o botão para alternar o modo de tiro
 
 
 func _physics_process(delta):
@@ -40,24 +40,21 @@ func _process(delta):
 		direction.y -= 1
 
 	if Input.is_action_pressed("Focus"):
-		speed = baseSpeed * focusSpeedMultiplier
+		speed = focusSpeed
 	else:
 		speed = baseSpeed
 	
-	#Tiros do jogador
-	if Input.is_action_pressed("Shoot") and _player_shooting.canshoot:	#Detectar input para atirar balas
-		#Atirar
+	if is_shooting and _player_shooting.canshoot:
 		_player_shooting.shoot()
 	
 	#Ativar bomb se apertar 2 vezes entre 0.5 segundos
 	if Input.is_action_just_pressed("Shoot"):
-		_bomb_double_tap_interval.start()
-		if shoot_key_press_count == 1:
-			_player_shooting.bomb()
-			shoot_key_press_count = 0
-		else:
-			shoot_key_press_count += 1
-
-#Resetar quantas vezes foi apertado para 0 depois do intervalo de tempo
-func _on_bomb_double_tap_interval_timeout() -> void:
-	shoot_key_press_count = 0
+		_shoot_key_interval.start()
+	else: if Input.is_action_just_released("Shoot") and _shoot_key_interval.time_left > 0.1:
+		_player_shooting.bomb()
+	
+func _on_shoot_key_interval_timeout() -> void:
+	#Tiros do jogador
+	if Input.is_action_pressed("Shoot"):
+		is_shooting = !is_shooting
+		print(is_shooting)
