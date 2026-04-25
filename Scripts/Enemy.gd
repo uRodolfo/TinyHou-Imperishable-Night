@@ -17,6 +17,6 @@ func _physics_process(delta: float) -> void:
 	b.position = self.position
 	b.rotation = self.rotation
 	
-	bullet_sprite.play("Red")    #Alterar cor da bala
+	bullet_sprite.play("Purple")    #Alterar cor da bala
 
 	get_parent().add_child(b)
