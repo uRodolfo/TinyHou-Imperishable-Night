@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var speed = 100  # Velocidade da bala
+var speed = 100  # Velocidade da bala
 var direction = Vector2.ZERO  # Direção da bala
 
 func _ready():

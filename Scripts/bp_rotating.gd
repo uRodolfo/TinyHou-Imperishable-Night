@@ -1,6 +1,11 @@
 extends Node2D
 
-var bullet_scene = load("res://Scenes/Bullet.tscn")
+var bullet_scene = load("res://Scenes/Bullet Patterns/BP_Circle_Spread.tscn")
+
+
+@export_category("Rotating Pattern")
+@export_group("Bullets Properties")
+@export_enum("Purple", "Red") var bullets_color : String = "Purple"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,11 +17,11 @@ func _physics_process(delta: float) -> void:
 
 	var b = bullet_scene.instantiate()
 	
-	var bullet_sprite = b.find_child("AnimatedSprite2D")
-	
 	b.position = self.position
 	b.rotation = self.rotation
 	
-	bullet_sprite.play("Purple")    #Alterar cor da bala
+	var bullet_sprite = b.find_child("AnimatedSprite2D")
+	if bullet_sprite:
+		bullet_sprite.play(bullets_color)    #Alterar cor da bala
 
 	get_parent().add_child(b)
