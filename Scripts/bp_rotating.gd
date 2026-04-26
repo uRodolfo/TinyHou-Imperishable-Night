@@ -21,14 +21,22 @@ func _physics_process(delta: float) -> void:
 	b.rotation = self.rotation
 	
 	#Testando o uso de funções anônimas para serem enviadas às balas
-	var state := {"rotation":0}    #Usa-se um dicionário para ser passado como referência, e não como um valor
+	var state := {"rotation":0, "basespeed":0}    #Usa-se um dicionário para ser passado como referência, e não como um valor
 	b.set_physicsUpdate_callback(func(caller, delta):
 		state.rotation = fmod(state.rotation + 4, 360)
+		
 		var bullet_size = abs(cos(deg_to_rad(state.rotation))) + 0.75
-
+		var bullet_speed_multiplier = abs(sin(deg_to_rad(state.rotation)))
+		
+		caller.speed = state.basespeed * bullet_speed_multiplier
+		
 		caller.scale = Vector2(bullet_size, bullet_size)
 	)
-		
+	
+	b.set_onReady_callback(func(caller):
+		state.basespeed = caller.speed
+	)
+	
 	var bullet_sprite = b.find_child("AnimatedSprite2D")
 	if bullet_sprite:
 		bullet_sprite.play(bullets_color)    #Alterar cor da bala
