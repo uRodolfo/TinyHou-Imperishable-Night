@@ -4,5 +4,4 @@
 
 [node name="BP_Circle_Spread" type="Node2D" unique_id=1826876198]
 script = ExtResource("1_o02vu")
-number_of_bullets = 3
 bullets_speed = 50

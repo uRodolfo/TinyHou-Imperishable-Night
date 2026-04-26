@@ -28,6 +28,6 @@ func _ready() -> void:
 		var bullet_sprite = b.find_child("AnimatedSprite2D")
 		if bullet_sprite:
 			bullet_sprite.play(bullets_color)    #Alterar cor da bala
-		
+
 		get_tree().current_scene.add_child.call_deferred(b)
 		queue_free()

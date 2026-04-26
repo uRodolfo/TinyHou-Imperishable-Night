@@ -1,6 +1,6 @@
 extends Node2D
 
-var bullet_scene = load("res://Scenes/Bullet Patterns/BP_Circle_Spread.tscn")
+var bullet_scene = load("res://Scenes/Enemy_Bullet.tscn")
 
 
 @export_category("Rotating Pattern")
@@ -20,6 +20,15 @@ func _physics_process(delta: float) -> void:
 	b.position = self.position
 	b.rotation = self.rotation
 	
+	#Testando o uso de funções anônimas para serem enviadas às balas
+	var state := {"rotation":0}    #Usa-se um dicionário para ser passado como referência, e não como um valor
+	b.set_physicsUpdate_callback(func(caller, delta):
+		state.rotation = fmod(state.rotation + 4, 360)
+		var bullet_size = abs(cos(deg_to_rad(state.rotation))) + 0.75
+
+		caller.scale = Vector2(bullet_size, bullet_size)
+	)
+		
 	var bullet_sprite = b.find_child("AnimatedSprite2D")
 	if bullet_sprite:
 		bullet_sprite.play(bullets_color)    #Alterar cor da bala

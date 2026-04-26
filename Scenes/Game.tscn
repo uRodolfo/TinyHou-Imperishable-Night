@@ -18,4 +18,4 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="BP_Rotating" parent="." unique_id=1723156014 instance=ExtResource("3_kldst")]
-position = Vector2(129, 72)
+position = Vector2(129, 85)
