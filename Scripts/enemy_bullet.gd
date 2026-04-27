@@ -1,4 +1,5 @@
 extends Node2D
+class_name Enemy_bullet
 
 var speed = 100  # Velocidade da bala
 var direction = Vector2.ZERO  # Direção da bala

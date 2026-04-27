@@ -2,12 +2,30 @@
 
 [ext_resource type="Script" uid="uid://cm5ut5phedtvq" path="res://Scripts/bp_rotating.gd" id="1_e3xa1"]
 [ext_resource type="Texture2D" uid="uid://lt75gs2scyqk" path="res://Sprites/icon.svg" id="2_78bre"]
+[ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="3_kix6f"]
+[ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="4_kix6f"]
+[ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="5_341nn"]
 
-[node name="BP_Rotating" type="Node2D" unique_id=1723156014]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_341nn"]
+size = Vector2(40, 40)
+
+[node name="BP_Rotating" type="Node2D" unique_id=1723156014 node_paths=PackedStringArray("bullet_build_component")]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_e3xa1")
+bullet_build_component = NodePath("BulletBuildComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=576879026]
 self_modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_78bre")
+
+[node name="HealthComponent" parent="." unique_id=738414152 instance=ExtResource("3_kix6f")]
+MAX_HEALTH = 300
+
+[node name="HitboxComponent" parent="." unique_id=903758762 node_paths=PackedStringArray("health_component") instance=ExtResource("4_kix6f")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=394749039]
+shape = SubResource("RectangleShape2D_341nn")
+
+[node name="BulletBuildComponent" parent="." unique_id=469693914 instance=ExtResource("5_341nn")]

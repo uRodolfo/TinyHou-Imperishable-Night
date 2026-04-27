@@ -1,11 +1,6 @@
 extends Node2D
 
-var bullet_scene = load("res://Scenes/Enemy_Bullet.tscn")
-
-
-@export_category("Rotating Pattern")
-@export_group("Bullets Properties")
-@export_enum("Purple", "Red") var bullets_color : String = "Purple"
+@export var bullet_build_component : BulletBuildComponent
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,10 +10,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	rotate(.2)
 
-	var b = bullet_scene.instantiate()
-	
-	b.position = self.position
-	b.rotation = self.rotation
+	var b = bullet_build_component.build_bullet()
 	
 	#Testando o uso de funções anônimas para serem enviadas às balas
 	var state := {"rotation":0, "basespeed":0}    #Usa-se um dicionário para ser passado como referência, e não como um valor
@@ -36,9 +28,5 @@ func _physics_process(delta: float) -> void:
 	b.set_onReady_callback(func(caller):
 		state.basespeed = caller.speed
 	)
-	
-	var bullet_sprite = b.find_child("AnimatedSprite2D")
-	if bullet_sprite:
-		bullet_sprite.play(bullets_color)    #Alterar cor da bala
 
 	get_parent().add_child(b)
