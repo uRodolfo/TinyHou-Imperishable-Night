@@ -1,17 +1,51 @@
-[gd_scene format=3 uid="uid://bv81bcnvabuc5"]
+[gd_scene format=3 uid="uid://dvod6hg6gle7s"]
 
-[ext_resource type="Script" uid="uid://cm5ut5phedtvq" path="res://Scripts/bp_rotating.gd" id="1_e3xa1"]
 [ext_resource type="Texture2D" uid="uid://lt75gs2scyqk" path="res://Sprites/icon.svg" id="2_78bre"]
 [ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="3_kix6f"]
 [ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="4_kix6f"]
 [ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="5_341nn"]
+
+[sub_resource type="GDScript" id="GDScript_kix6f"]
+script/source = "extends Node2D
+
+@export var bullet_build_component : BulletBuildComponent
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	rotate(.2)
+
+	var b = bullet_build_component.build_bullet()
+	
+	#Testando o uso de funções anônimas para serem enviadas às balas
+	var state := {\"rotation\":0, \"basespeed\":0}    #Usa-se um dicionário para ser passado como referência, e não como um valor
+	b.set_physicsUpdate_callback(func(caller, delta):
+		state.rotation = fmod(state.rotation + 4, 360)
+		
+		var bullet_size = abs(cos(deg_to_rad(state.rotation))) + 0.75
+		var bullet_speed_multiplier = abs(sin(deg_to_rad(state.rotation)))
+		
+		caller.speed = state.basespeed * bullet_speed_multiplier
+		
+		caller.scale = Vector2(bullet_size, bullet_size)
+	)
+	
+	b.set_onReady_callback(func(caller):
+		state.basespeed = caller.speed
+	)
+
+	get_parent().add_child(b)
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_341nn"]
 size = Vector2(40, 40)
 
 [node name="BP_Rotating" type="Node2D" unique_id=1723156014 node_paths=PackedStringArray("bullet_build_component")]
 scale = Vector2(0.3, 0.3)
-script = ExtResource("1_e3xa1")
+script = SubResource("GDScript_kix6f")
 bullet_build_component = NodePath("BulletBuildComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=576879026]
@@ -20,9 +54,11 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_78bre")
 
 [node name="HealthComponent" parent="." unique_id=738414152 instance=ExtResource("3_kix6f")]
-MAX_HEALTH = 300
+MAX_HEALTH = 300.0
 
 [node name="HitboxComponent" parent="." unique_id=903758762 node_paths=PackedStringArray("health_component") instance=ExtResource("4_kix6f")]
+collision_layer = 4
+collision_mask = 34
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=394749039]

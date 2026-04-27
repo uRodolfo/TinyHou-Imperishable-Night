@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsccriol0s05" path="res://Scripts/Components/bullet_build_component.gd" id="1_y280x"]
 
-[node name="BulletBuildComponent" type="Node2D" unique_id=469693914]
+[node name="BulletBuildComponent" type="Node" unique_id=147864895]
 script = ExtResource("1_y280x")
 bullet_speed = 50
 bullets_color = "Red"

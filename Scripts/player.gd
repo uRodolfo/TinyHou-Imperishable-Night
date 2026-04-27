@@ -8,8 +8,9 @@ var speed = 300                  #Velocidade atual do jogador
 var direction = Vector2.ZERO
 
 #Nodes
-@onready var _player_shooting = $PlayerShootingComponent #Lógica de tiros do jogador
-@onready var _shoot_key_interval = $ShootKeyInterval #Tempo para segurar o botão para alternar o modo de tiro
+@onready var _player_shooting := $PlayerShootingComponent #Lógica de tiros do jogador
+@onready var _shoot_key_interval := $ShootKeyInterval #Tempo para segurar o botão para alternar o modo de tiro
+@onready var health_component := $HealthComponent #Componente que faz a lógica de vida
 
 
 func _physics_process(delta):
@@ -17,12 +18,6 @@ func _physics_process(delta):
 
 	velocity = direction.normalized() * speed
 	var collision = move_and_collide(velocity * delta)
-
-	# Verifica colisão
-	if collision:
-		var collider = collision.get_collider()
-		if collider.name == "Enemy" or collider.name == "Bullet":
-			print("Hit com:", collider.name)
 
 func _process(delta):
 	# Movimentação

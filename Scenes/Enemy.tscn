@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://2ys8yl6ax3kl"]
+
+[ext_resource type="Texture2D" uid="uid://lt75gs2scyqk" path="res://Sprites/icon.svg" id="1_hghv2"]
+[ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="2_xeo28"]
+[ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="3_kpr8r"]
+[ext_resource type="Script" uid="uid://wk4t5osagdo8" path="res://Scripts/bullet_pattern_machine.gd" id="4_1exfc"]
+[ext_resource type="PackedScene" uid="uid://bar0o22hc07rl" path="res://Scenes/Bullet Patterns/BP_Circle_Spread.tscn" id="5_mo1ky"]
+[ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="6_mo1ky"]
+[ext_resource type="Script" uid="uid://dd7j2bb3ska7w" path="res://Scripts/Bullet_callables/grower.gd" id="7_6bs3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1exfc"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo1ky"]
+size = Vector2(14, 14)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1965600961]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1752616469]
+shape = SubResource("RectangleShape2D_1exfc")
+debug_color = Color(0.8107572, 0.4309497, 0, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=8375209]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_hghv2")
+
+[node name="HealthComponent" parent="." unique_id=738414152 instance=ExtResource("2_xeo28")]
+
+[node name="HitboxComponent" parent="." unique_id=903758762 node_paths=PackedStringArray("health_component") instance=ExtResource("3_kpr8r")]
+collision_layer = 4
+collision_mask = 35
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=769372021]
+shape = SubResource("RectangleShape2D_mo1ky")
+
+[node name="BulletBuildComponent" parent="." unique_id=147864895 instance=ExtResource("6_mo1ky")]
+bullet_speed = 40
+bullets_color = "Purple"
+
+[node name="BulletPatternMachine" type="Node2D" parent="." unique_id=253324263]
+script = ExtResource("4_1exfc")
+
+[node name="BP_Circle_Spread" parent="BulletPatternMachine" unique_id=92206602 node_paths=PackedStringArray("bullet_build_component", "bullet_call_backs") instance=ExtResource("5_mo1ky")]
+bullet_build_component = NodePath("../../BulletBuildComponent")
+bullet_call_backs = NodePath("../../Grower")
+number_of_bullets = 5
+rotation_speed = 60.0
+seconds_between_shots = 0.3
+
+[node name="Grower" type="Node" parent="." unique_id=1229596318]
+script = ExtResource("7_6bs3c")

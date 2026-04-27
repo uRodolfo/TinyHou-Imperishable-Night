@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name BulletBuildComponent
 
 @export var bullet_scene = preload("res://Scenes/Enemy_Bullet.tscn")
@@ -15,8 +15,8 @@ func build_bullet() -> Enemy_bullet:
 	if get_parent() is Node2D:
 		var parent : Node2D = get_parent()
 			
-		b.global_position = parent.position
-		b.rotation = parent.rotation
+		b.global_position = parent.global_position
+		b.global_rotation = parent.global_rotation
 		b.speed = bullet_speed
 		
 		#Cor das balas

@@ -26,23 +26,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hunpp"]
 radius = 2.0
 
-[node name="Enemy_Bullet" type="Node2D" unique_id=1928259072 groups=["Enemy_Bullets"]]
+[node name="Enemy_Bullet" type="Area2D" unique_id=788567723 node_paths=PackedStringArray("screen_notifier") groups=["Enemy_Bullets"]]
 z_index = 1
+collision_layer = 64
+collision_mask = 3
 script = ExtResource("1_k808u")
+screen_notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1186096413]
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_pypll")
 animation = &"Purple"
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1493594505]
-rect = Rect2(-5, -5, 10, 10)
-
-[node name="Area2D" type="Area2D" parent="." unique_id=785172095]
-position = Vector2(-6, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1430671957]
-position = Vector2(6, 6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1430671957]
 shape = SubResource("CircleShape2D_hunpp")
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1493594505]
+rect = Rect2(-5, -5, 10, 10)

@@ -4,6 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cvqeyy7kg5nur" path="res://Sprites/Player/Reimu.png" id="2_kyqiw"]
 [ext_resource type="Script" uid="uid://myetvtfb1rxr" path="res://Scripts/Components/player_shooting_component.gd" id="3_gntrk"]
 [ext_resource type="Script" uid="uid://b6j556kixxgjp" path="res://Scripts/player_animation.gd" id="4_dewec"]
+[ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="5_5ixxa"]
+[ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="6_nn08x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fnolj"]
+radius = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
 atlas = ExtResource("2_kyqiw")
@@ -144,12 +149,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fnolj"]
-radius = 2.0
-
-[node name="Player" type="CharacterBody2D" unique_id=579317780]
+[node name="Player" type="CharacterBody2D" unique_id=579317780 groups=["Player"]]
 script = ExtResource("1_yvgu0")
 baseSpeed = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474224150]
+modulate = Color(0, 0, 0, 1)
+shape = SubResource("CircleShape2D_fnolj")
 
 [node name="Player_Animation" type="Node2D" parent="." unique_id=1677435510]
 script = ExtResource("4_dewec")
@@ -157,10 +163,6 @@ script = ExtResource("4_dewec")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player_Animation" unique_id=2101067525]
 sprite_frames = SubResource("SpriteFrames_miouo")
 animation = &"Idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1405953714]
-modulate = Color(0, 0, 0, 1)
-shape = SubResource("CircleShape2D_fnolj")
 
 [node name="PlayerShootingComponent" type="Node2D" parent="." unique_id=1455907652]
 script = ExtResource("3_gntrk")
@@ -175,6 +177,18 @@ position = Vector2(0, -12)
 [node name="ShootKeyInterval" type="Timer" parent="." unique_id=1402923461]
 wait_time = 0.3
 one_shot = true
+
+[node name="HealthComponent" parent="." unique_id=738414152 instance=ExtResource("5_5ixxa")]
+MAX_HEALTH = 3.0
+
+[node name="HitboxComponent" parent="." unique_id=903758762 node_paths=PackedStringArray("health_component") instance=ExtResource("6_nn08x")]
+collision_layer = 2
+collision_mask = 68
+health_component = NodePath("../HealthComponent")
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxComponent" unique_id=1405953714]
+modulate = Color(0, 0, 0, 1)
+shape = SubResource("CircleShape2D_fnolj")
 
 [connection signal="timeout" from="PlayerShootingComponent/Shootspeed" to="PlayerShootingComponent" method="_on_shootspeed_timeout"]
 [connection signal="timeout" from="ShootKeyInterval" to="." method="_on_shoot_key_interval_timeout"]

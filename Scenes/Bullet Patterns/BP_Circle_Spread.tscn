@@ -2,6 +2,6 @@
 
 [ext_resource type="Script" uid="uid://blcjp3xgx2d2i" path="res://Scripts/bp_circle_spread.gd" id="1_o02vu"]
 
-[node name="BP_Circle_Spread" type="Node2D" unique_id=1826876198]
+[node name="BP_Circle_Spread" type="Node2D" unique_id=1848085657 node_paths=PackedStringArray("bullet_build_component")]
 script = ExtResource("1_o02vu")
-bullets_speed = 50
+bullet_build_component = NodePath("")
