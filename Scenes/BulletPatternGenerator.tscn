@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bar0o22hc07rl"]
+
+[ext_resource type="Script" uid="uid://blcjp3xgx2d2i" path="res://Scripts/bullet_pattern_generator.gd" id="1_axlum"]
+
+[node name="BulletPatternGenerator" type="Node2D" unique_id=1848085657]
+script = ExtResource("1_axlum")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BulletPatternRes" format=3 uid="uid://b8atxi0cdumcl"]
+
+[ext_resource type="Script" uid="uid://cmibveo84g4j5" path="res://Scripts/Resources/bullet_pattern_res.gd" id="1_7655i"]
+
+[resource]
+script = ExtResource("1_7655i")
+number_of_bullets = 6
+bullets_speed = 40
+spawn_radius = 20.0
+seconds_between_shots = 1.5
+spread_angle_deg = 360.0
+is_spread_radial = true
+bullets_direction = "Pattern to Player"

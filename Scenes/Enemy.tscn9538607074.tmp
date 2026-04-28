@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://wk4t5osagdo8" path="res://Scripts/bullet_pattern_machine.gd" id="4_1exfc"]
 [ext_resource type="PackedScene" uid="uid://bar0o22hc07rl" path="res://Scenes/BulletPatternGenerator.tscn" id="5_mo1ky"]
 [ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="6_mo1ky"]
-[ext_resource type="Resource" uid="uid://bahogk4ree74q" path="res://Resources/Strategies/Bullet Patterns/rotating_3_shots.tres" id="7_6bs3c"]
+[ext_resource type="Script" uid="uid://dd7j2bb3ska7w" path="res://Scripts/Bullet_callables/grower.gd" id="7_6bs3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1exfc"]
 size = Vector2(12, 12)
@@ -44,4 +44,6 @@ script = ExtResource("4_1exfc")
 
 [node name="BulletPatternGenerator" parent="BulletPatternMachine" unique_id=92206602 node_paths=PackedStringArray("bullet_build_component") instance=ExtResource("5_mo1ky")]
 bullet_build_component = NodePath("../../BulletBuildComponent")
-bp_res = ExtResource("7_6bs3c")
+
+[node name="Grower" type="Node" parent="." unique_id=1229596318]
+script = ExtResource("7_6bs3c")

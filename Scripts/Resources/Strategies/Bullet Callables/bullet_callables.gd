@@ -1,5 +1,5 @@
-extends Node
-class_name BulletCallables
+extends Resource
+class_name BulletCallablesStrategy
 
 #Métodos para setar as funções anônimas
 func UpdateCallable() -> Callable:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BulletPatternRes" format=3 uid="uid://bj305101j446f"]
+
+[ext_resource type="Script" uid="uid://cmibveo84g4j5" path="res://Scripts/Resources/bullet_pattern_res.gd" id="1_553yc"]
+
+[resource]
+script = ExtResource("1_553yc")
+number_of_bullets = 5
+bullets_speed = 40
+spread_angle_deg = 30.0
+bullets_direction = "Pattern to Player"
+metadata/_custom_type_script = "uid://cmibveo84g4j5"
