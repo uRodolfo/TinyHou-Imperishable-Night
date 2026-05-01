@@ -12,7 +12,7 @@ var is_stopping : bool = false
 func Enter():	
 	#Calcular a posição inicial do player e fazer o inimigo se mover até ela
 	initial_player_position = _player.global_position
-	_enemy.move_direction = (initial_player_position - _enemy.global_position).normalized()
+	_enemy.move_direction = (initial_player_position - _enemy.global_position)
 
 func Phyisics_Update(_delta: float):
 	#Se o inimigo está parando, esperar sua velocidade chegar a 0 para trocar de state

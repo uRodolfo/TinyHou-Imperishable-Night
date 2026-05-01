@@ -14,9 +14,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#Acelerar o inimigo caso tenha uma direção. Caso não tenha, desacelerar até que fique parado
-	#OBS: Move_Direction não é normalizado durante o calculo da aceleração!
 	if move_direction != Vector2.ZERO:
-		var max_velocity : Vector2 = move_direction * speed
+		var max_velocity : Vector2 = move_direction.normalized() * speed
 		velocity = velocity.move_toward(max_velocity, delta * acceleration)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, delta * acceleration)

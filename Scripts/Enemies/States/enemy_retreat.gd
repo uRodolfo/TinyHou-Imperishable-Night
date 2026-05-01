@@ -19,10 +19,14 @@ func Enter():
 	
 	#Diminuir a velocidade do inimigo para recuar mais devagar
 	_enemy.speed /= 3
-	_enemy.acceleration /= 2
+	_enemy.acceleration /= 5
 
 func Phyisics_Update(_delta: float):
-	_enemy.move_direction = -(player_direction).normalized() #Inverter a distância do player para que o inimigo corra dele
+	_enemy.move_direction = -(player_direction) #Inverter a distância do player para que o inimigo corra dele
+
+func Exit():
+	_enemy.speed = _enemy.MAX_SPEED
+	_enemy.acceleration = _enemy.MAX_ACCELERATION
 
 #Deletar inimigo quando sair da tela
 func on_screen_exited():
