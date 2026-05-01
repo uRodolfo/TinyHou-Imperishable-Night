@@ -31,6 +31,7 @@ window/size/window_width_override=1690
 window/size/window_height_override=950
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
+window/layer_3="Enemies"
 
 [dotnet]
 
@@ -83,7 +84,7 @@ Focus={
 [layer_names]
 
 2d_physics/layer_2="Player"
-2d_physics/layer_3="Enemys"
+2d_physics/layer_3="Enemies"
 2d_physics/layer_6="player_bullets"
 2d_physics/layer_7="enemy_bullets"
 

@@ -1,4 +1,5 @@
 extends Node2D
+class_name BulletPatternGenerator
 
 @export var bullet_build_component : BulletBuildComponent     #Construtor de balas
 @export var bullet_callbacks : BulletCallablesStrategy = BulletCallablesStrategy.new() #Funções que serão executadas durante o tempo de vida da bala
@@ -34,7 +35,6 @@ func Emit_bullets(delta) -> void:
 			var bullet_pos : Vector2
 			
 			if bp_res.is_spread_radial:     #Calcular rotação e posição das balas para atirar em 360
-				print(_bullet_pattern_rotation)
 				bullet_rotation = _angle_between_bullets * i + (PI/2) + deg_to_rad(_bullet_pattern_rotation) #Calcular rotação das balas com base no número de balas
 				bullet_pos = (Vector2.RIGHT.rotated(bullet_rotation) * bp_res.spawn_radius)    #Calcular posição das balas com base na sua rotação e spawn radius
 			
@@ -72,13 +72,12 @@ func Emit_bullets(delta) -> void:
 			get_tree().current_scene.add_child.call_deferred(b)
 
 func PlayerPosition() -> Vector2:
-	var player = get_tree().get_nodes_in_group("Player")
+	var player = get_tree().get_first_node_in_group("Player")
 
-	if player.size() > 0:
-		if player[0] is Node2D:
-			var p : Node2D = player[0]
-			var player_position : Vector2 = p.position
-			return player_position
+	if player is Node2D:
+		var p : Node2D = player
+		var player_position : Vector2 = p.position
+		return player_position
 	return Vector2.ZERO
 
 func SetBulletCallbacks(bullet: Bullet, bc: BulletCallablesStrategy) -> void:

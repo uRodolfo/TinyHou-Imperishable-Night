@@ -31,7 +31,8 @@ func _ready() -> void:
 func _on_hitbox_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		var hitbox : HitboxComponent = area
-		hitbox.damage(self)
+		hitbox.damage(damage)
+		queue_free()
 
 #Excluir balas quando sairem da tela
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

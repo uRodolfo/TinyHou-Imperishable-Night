@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://xlwffpmjt6iv" path="res://Scenes/Player.tscn" id="1_y700s"]
 [ext_resource type="AudioStream" uid="uid://eydt6tn3a6ja" path="res://Sounds/Music/locked girl.mp3" id="3_j5yw3"]
-[ext_resource type="PackedScene" uid="uid://2ys8yl6ax3kl" path="res://Scenes/Enemy.tscn" id="3_kldst"]
+[ext_resource type="PackedScene" uid="uid://c4cm5skpfvfvm" path="res://Scenes/Enemy_Fairy.tscn" id="3_kldst"]
 
 [node name="Node2D" type="Control" unique_id=132443385]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="Player" parent="." unique_id=1634487443 instance=ExtResource("1_y700s")]
-position = Vector2(128, 175)
+position = Vector2(122, 224)
 
 [node name="LockedGirl Soundtrack" type="AudioStreamPlayer" parent="." unique_id=166022374]
 stream = ExtResource("3_j5yw3")
@@ -17,5 +17,23 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
-[node name="Enemy" parent="." unique_id=1965600961 instance=ExtResource("3_kldst")]
-position = Vector2(126, 85)
+[node name="Enemy_Fairy" parent="." unique_id=1986242539 instance=ExtResource("3_kldst")]
+position = Vector2(126, -58)
+
+[node name="Enemy_Fairy2" parent="." unique_id=255274324 instance=ExtResource("3_kldst")]
+position = Vector2(175, -83)
+
+[node name="Enemy_Fairy3" parent="." unique_id=796544766 instance=ExtResource("3_kldst")]
+position = Vector2(220, -53)
+
+[node name="Enemy_Fairy4" parent="." unique_id=81634422 instance=ExtResource("3_kldst")]
+position = Vector2(113, -129)
+
+[node name="Enemy_Fairy5" parent="." unique_id=1038557674 instance=ExtResource("3_kldst")]
+position = Vector2(167, -141)
+
+[node name="Enemy_Fairy6" parent="." unique_id=732187369 instance=ExtResource("3_kldst")]
+position = Vector2(219, -142)
+
+[node name="Enemy_Fairy7" parent="." unique_id=1987556198 instance=ExtResource("3_kldst")]
+position = Vector2(261, -112)

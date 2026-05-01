@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cl6tu8gitkhsr"]
 
-[ext_resource type="Script" uid="uid://cp42tfcpnrptt" path="res://Scripts/playerbullet.gd" id="1_buixl"]
+[ext_resource type="Script" uid="uid://cp42tfcpnrptt" path="res://Scripts/Player/playerbullet.gd" id="1_buixl"]
 [ext_resource type="Texture2D" uid="uid://yxs8yq5crsnu" path="res://Sprites/Player/Reimu_Bullet.png" id="2_buixl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6rqe"]

@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://lt75gs2scyqk" path="res://Sprites/icon.svg" id="1_hghv2"]
 [ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="2_xeo28"]
 [ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="3_kpr8r"]
-[ext_resource type="Script" uid="uid://wk4t5osagdo8" path="res://Scripts/bullet_pattern_machine.gd" id="4_1exfc"]
+[ext_resource type="Script" uid="uid://wk4t5osagdo8" path="res://Scripts/Enemies/bullet_pattern_machine.gd" id="4_1exfc"]
 [ext_resource type="PackedScene" uid="uid://bar0o22hc07rl" path="res://Scenes/BulletPatternGenerator.tscn" id="5_mo1ky"]
 [ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="6_mo1ky"]
-[ext_resource type="Resource" uid="uid://bahogk4ree74q" path="res://Resources/Strategies/Bullet Patterns/rotating_3_shots.tres" id="7_6bs3c"]
+[ext_resource type="Resource" uid="uid://bj305101j446f" path="res://Resources/Strategies/Bullet Patterns/45_deg_5_shots.tres" id="7_6bs3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1exfc"]
 size = Vector2(12, 12)

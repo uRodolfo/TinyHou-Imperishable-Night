@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://csg4xfj5qtoyv"]
 
-[ext_resource type="Script" uid="uid://vkpe2610a55s" path="res://Scripts/enemy_bullet.gd" id="1_k808u"]
+[ext_resource type="Script" uid="uid://vkpe2610a55s" path="res://Scripts/Enemies/enemy_bullet.gd" id="1_k808u"]
 [ext_resource type="Texture2D" uid="uid://cwkh8b5d0suho" path="res://Sprites/Enemy_bullets/Purple Bullet.png" id="2_xqejt"]
 [ext_resource type="Texture2D" uid="uid://cnpcoyqe2hhhh" path="res://Sprites/Enemy_bullets/Red Bullet.png" id="3_okfbw"]
 
