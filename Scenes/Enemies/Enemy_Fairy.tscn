@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://c4cm5skpfvfvm"]
+
+[ext_resource type="Script" uid="uid://lcwf42x4h4d" path="res://Scripts/Enemies/enemy_fairy.gd" id="1_aewa2"]
+[ext_resource type="Texture2D" uid="uid://lt75gs2scyqk" path="res://Sprites/icon.svg" id="2_wtxod"]
+[ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="3_mkaxl"]
+[ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="4_tnciq"]
+[ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="5_f6cmu"]
+[ext_resource type="PackedScene" uid="uid://bar0o22hc07rl" path="res://Scenes/BulletPatternGenerator.tscn" id="6_r158q"]
+[ext_resource type="Script" uid="uid://cmibveo84g4j5" path="res://Scripts/Resources/bullet_pattern_res.gd" id="7_qtki0"]
+[ext_resource type="Script" uid="uid://b12f1hoxv7qnr" path="res://Scripts/Enemies/States/state_machine.gd" id="8_0mau7"]
+[ext_resource type="Script" uid="uid://lq0dppnaudrq" path="res://Scripts/Enemies/States/enemy_approach.gd" id="9_qm578"]
+[ext_resource type="Script" uid="uid://c433nramgcaa" path="res://Scripts/Enemies/States/enemy_attack.gd" id="10_t1qao"]
+[ext_resource type="Script" uid="uid://cv5j40p5sy3ef" path="res://Scripts/Enemies/States/enemy_retreat.gd" id="11_i5qrr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyls0"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5l16"]
+size = Vector2(16, 16)
+
+[sub_resource type="Resource" id="Resource_rvwgs"]
+script = ExtResource("7_qtki0")
+number_of_bullets = 3
+bullets_speed = 60
+seconds_between_shots = 0.3
+spread_angle_deg = 10.0
+bullets_direction = "Pattern to Player"
+metadata/_custom_type_script = "uid://cmibveo84g4j5"
+
+[node name="Enemy_Fairy" type="CharacterBody2D" unique_id=1986242539]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_aewa2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=230082762]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_wtxod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1019554684]
+shape = SubResource("RectangleShape2D_cyls0")
+
+[node name="HealthComponent" parent="." unique_id=738414152 instance=ExtResource("3_mkaxl")]
+MAX_HEALTH = 3.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=106334204]
+rect = Rect2(-20, -20, 40, 40)
+
+[node name="HitboxComponent" parent="." unique_id=903758762 node_paths=PackedStringArray("health_component") instance=ExtResource("4_tnciq")]
+collision_layer = 4
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=622376032]
+shape = SubResource("RectangleShape2D_d5l16")
+
+[node name="BulletBuildComponent" parent="." unique_id=147864895 instance=ExtResource("5_f6cmu")]
+
+[node name="BulletPatternGenerator" parent="." unique_id=1848085657 node_paths=PackedStringArray("bullet_build_component") instance=ExtResource("6_r158q")]
+bullet_build_component = NodePath("../BulletBuildComponent")
+bp_res = SubResource("Resource_rvwgs")
+
+[node name="StateMachine" type="Node" parent="." unique_id=629920974 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("8_0mau7")
+initial_state = NodePath("Approach")
+
+[node name="Approach" type="Node" parent="StateMachine" unique_id=1812378479]
+script = ExtResource("9_qm578")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1182230330]
+script = ExtResource("10_t1qao")
+
+[node name="Retreat" type="Node" parent="StateMachine" unique_id=1340820569]
+script = ExtResource("11_i5qrr")

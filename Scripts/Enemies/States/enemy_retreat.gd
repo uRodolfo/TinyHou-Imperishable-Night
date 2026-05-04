@@ -32,4 +32,3 @@ func Exit():
 func on_screen_exited():
 	if _enemy:
 		queue_free()
-		print("deleted")

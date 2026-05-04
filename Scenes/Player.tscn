@@ -7,9 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="5_5ixxa"]
 [ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="6_nn08x"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fnolj"]
-radius = 3.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
 atlas = ExtResource("2_kyqiw")
 region = Rect2(24, 16, 8, 16)
@@ -149,13 +146,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn08x"]
+size = Vector2(8, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fnolj"]
+radius = 2.0
+
 [node name="Player" type="CharacterBody2D" unique_id=579317780 groups=["Player"]]
+collision_mask = 9
 script = ExtResource("1_yvgu0")
 baseSpeed = 100
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474224150]
-modulate = Color(0, 0, 0, 1)
-shape = SubResource("CircleShape2D_fnolj")
 
 [node name="Player_Animation" type="Node2D" parent="." unique_id=1677435510]
 script = ExtResource("4_dewec")
@@ -163,6 +163,10 @@ script = ExtResource("4_dewec")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player_Animation" unique_id=2101067525]
 sprite_frames = SubResource("SpriteFrames_miouo")
 animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474224150]
+modulate = Color(0, 0, 0, 1)
+shape = SubResource("RectangleShape2D_nn08x")
 
 [node name="PlayerShootingComponent" type="Node2D" parent="." unique_id=1455907652]
 script = ExtResource("3_gntrk")

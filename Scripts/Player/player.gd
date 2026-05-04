@@ -14,10 +14,8 @@ var direction = Vector2.ZERO
 
 
 func _physics_process(delta):
-	
-
 	velocity = direction.normalized() * speed
-	var collision = move_and_collide(velocity * delta)
+	move_and_slide()
 
 func _process(delta):
 	# Movimentação

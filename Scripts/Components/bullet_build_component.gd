@@ -3,7 +3,6 @@ class_name BulletBuildComponent
 
 @export var bullet_scene = preload("res://Scenes/Enemy_Bullet.tscn")
 
-@export_group("Bullets propertys")
 @export var bullet_speed = 100    #Note que o bullet pattern sobrescreve a velocidade determinada aqui
 @export_enum("Purple", "Red") var bullets_color : String = "Purple"
 

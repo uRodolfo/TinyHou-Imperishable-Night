@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://cadv6q2fh2cll"]
+
+[ext_resource type="PackedScene" uid="uid://c4cm5skpfvfvm" path="res://Scenes/Enemies/Enemy_Fairy.tscn" id="1_7sl8k"]
+[ext_resource type="Script" uid="uid://bee6gkvbasa8r" path="res://Scripts/Resources/wavedata.gd" id="1_ss31s"]
+
+[resource]
+script = ExtResource("1_ss31s")
+wave_name = "Wave 1"
+enemy_scene = ExtResource("1_7sl8k")
+quantity = 8
+spawn_interval = 0.2
+spawn_position_1 = Vector2(0, -64)
+spawn_position_2 = Vector2(256, -128)
+metadata/_custom_type_script = "uid://bee6gkvbasa8r"
