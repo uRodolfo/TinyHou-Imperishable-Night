@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="5_f6cmu"]
 [ext_resource type="PackedScene" uid="uid://bar0o22hc07rl" path="res://Scenes/BulletPatternGenerator.tscn" id="6_r158q"]
 [ext_resource type="Script" uid="uid://cmibveo84g4j5" path="res://Scripts/Resources/bullet_pattern_res.gd" id="7_qtki0"]
-[ext_resource type="Script" uid="uid://b12f1hoxv7qnr" path="res://Scripts/Enemies/States/state_machine.gd" id="8_0mau7"]
 [ext_resource type="Script" uid="uid://lq0dppnaudrq" path="res://Scripts/Enemies/States/enemy_approach.gd" id="9_qm578"]
 [ext_resource type="Script" uid="uid://c433nramgcaa" path="res://Scripts/Enemies/States/enemy_attack.gd" id="10_t1qao"]
 [ext_resource type="Script" uid="uid://cv5j40p5sy3ef" path="res://Scripts/Enemies/States/enemy_retreat.gd" id="11_i5qrr"]
@@ -26,6 +25,20 @@ seconds_between_shots = 0.3
 spread_angle_deg = 10.0
 bullets_direction = "Pattern to Player"
 metadata/_custom_type_script = "uid://cmibveo84g4j5"
+
+[sub_resource type="GDScript" id="GDScript_enfr7"]
+script/source = "extends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="Enemy_Fairy" type="CharacterBody2D" unique_id=1986242539]
 collision_layer = 4
@@ -59,9 +72,8 @@ shape = SubResource("RectangleShape2D_d5l16")
 bullet_build_component = NodePath("../BulletBuildComponent")
 bp_res = SubResource("Resource_rvwgs")
 
-[node name="StateMachine" type="Node" parent="." unique_id=629920974 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("8_0mau7")
-initial_state = NodePath("Approach")
+[node name="StateMachine" type="Node" parent="." unique_id=629920974]
+script = SubResource("GDScript_enfr7")
 
 [node name="Approach" type="Node" parent="StateMachine" unique_id=1812378479]
 script = ExtResource("9_qm578")

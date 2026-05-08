@@ -36,4 +36,4 @@ func spawn_wave(wave_data : WaveData) -> void:
 		
 		#Se a wave tiver um intervalo entre spawns, esperar até executar a próxima iteração
 		if wave_data.spawn_interval > 0:
-			await get_tree().create_timer(wave_data.spawn_interval).timeout
+			await get_tree().create_timer(wave_data.spawn_interval, false).timeout
