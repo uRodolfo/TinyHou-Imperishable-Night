@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://xlwffpmjt6iv" path="res://Scenes/Player.tscn" id="1_y700s"]
 [ext_resource type="AudioStream" uid="uid://eydt6tn3a6ja" path="res://Sounds/Music/locked girl.mp3" id="3_j5yw3"]
-[ext_resource type="Script" path="res://Scripts/enemy_spawn_manager.gd" id="3_kldst"]
+[ext_resource type="Script" uid="uid://k5ofdchbi8r7" path="res://Scripts/enemy_spawn_manager.gd" id="3_kldst"]
 [ext_resource type="Script" uid="uid://bee6gkvbasa8r" path="res://Scripts/Resources/wavedata.gd" id="4_b2bpf"]
 [ext_resource type="Resource" uid="uid://cadv6q2fh2cll" path="res://Resources/Waves/Level1/Wave1.tres" id="5_7lihs"]
 [ext_resource type="PackedScene" uid="uid://bw6dyilmm1ag3" path="res://Scenes/Enemies/Enemy_Fairy2.tscn" id="6_7lihs"]
@@ -29,7 +29,7 @@ tracks/0/path = NodePath("EnemySpawnManager")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(10),
+"times": PackedFloat32Array(3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -52,6 +52,7 @@ position = Vector2(128, 192)
 [node name="LockedGirl Soundtrack" type="AudioStreamPlayer" parent="." unique_id=166022374]
 stream = ExtResource("3_j5yw3")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="ArenaBounds" type="StaticBody2D" parent="." unique_id=1315510533]
