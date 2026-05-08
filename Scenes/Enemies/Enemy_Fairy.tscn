@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4cm5skpfvfvm"]
 
 [ext_resource type="Script" uid="uid://lcwf42x4h4d" path="res://Scripts/Enemies/enemy_fairy.gd" id="1_aewa2"]
-[ext_resource type="Texture2D" uid="uid://lt75gs2scyqk" path="res://Sprites/icon.svg" id="2_wtxod"]
+[ext_resource type="Texture2D" uid="uid://deb8edrmw4rv0" path="res://Sprites/fadinha sprite touhou-Sheet.png" id="2_aewa2"]
 [ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="3_mkaxl"]
 [ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="4_tnciq"]
 [ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="5_f6cmu"]
@@ -11,6 +11,42 @@
 [ext_resource type="Script" uid="uid://lq0dppnaudrq" path="res://Scripts/Enemies/States/enemy_approach.gd" id="9_qm578"]
 [ext_resource type="Script" uid="uid://c433nramgcaa" path="res://Scripts/Enemies/States/enemy_attack.gd" id="10_t1qao"]
 [ext_resource type="Script" uid="uid://cv5j40p5sy3ef" path="res://Scripts/Enemies/States/enemy_retreat.gd" id="11_i5qrr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtxod"]
+atlas = ExtResource("2_aewa2")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkaxl"]
+atlas = ExtResource("2_aewa2")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnciq"]
+atlas = ExtResource("2_aewa2")
+region = Rect2(16, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6cmu"]
+atlas = ExtResource("2_aewa2")
+region = Rect2(24, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r158q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtxod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkaxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnciq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6cmu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyls0"]
 size = Vector2(12, 12)
@@ -32,9 +68,9 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_aewa2")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=230082762]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_wtxod")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=525883189]
+sprite_frames = SubResource("SpriteFrames_r158q")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1019554684]
 shape = SubResource("RectangleShape2D_cyls0")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://2ys8yl6ax3kl"]
 
-[ext_resource type="Texture2D" uid="uid://lt75gs2scyqk" path="res://Sprites/icon.svg" id="1_hghv2"]
+[ext_resource type="Texture2D" uid="uid://deb8edrmw4rv0" path="res://Sprites/fadinha sprite touhou-Sheet.png" id="1_6bs3c"]
 [ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="2_xeo28"]
 [ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="3_kpr8r"]
 [ext_resource type="Script" uid="uid://wk4t5osagdo8" path="res://Scripts/Enemies/bullet_pattern_machine.gd" id="4_1exfc"]
@@ -11,6 +11,42 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1exfc"]
 size = Vector2(12, 12)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoxpr"]
+atlas = ExtResource("1_6bs3c")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idouy"]
+atlas = ExtResource("1_6bs3c")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o0ue"]
+atlas = ExtResource("1_6bs3c")
+region = Rect2(16, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s1gy"]
+atlas = ExtResource("1_6bs3c")
+region = Rect2(24, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uihya"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoxpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idouy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o0ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s1gy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mo1ky"]
 size = Vector2(14, 14)
 
@@ -20,9 +56,9 @@ size = Vector2(14, 14)
 shape = SubResource("RectangleShape2D_1exfc")
 debug_color = Color(0.8107572, 0.4309497, 0, 0.41960785)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=8375209]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_hghv2")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2048923507]
+sprite_frames = SubResource("SpriteFrames_uihya")
+autoplay = "default"
 
 [node name="HealthComponent" parent="." unique_id=738414152 instance=ExtResource("2_xeo28")]
 MAX_HEALTH = 300.0
