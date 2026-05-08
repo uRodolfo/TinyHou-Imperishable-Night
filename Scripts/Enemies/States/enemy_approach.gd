@@ -5,7 +5,7 @@ class_name EnemyApproach
 @onready var _player : CharacterBody2D = get_tree().get_first_node_in_group("Player")
 @onready var _screen_notifier : VisibleOnScreenNotifier2D = owner.find_child("VisibleOnScreenNotifier2D")
 
-var stop_distance : float = 110.0           #Distância em que o inimigo irá começar a parar e trocar de state
+var stop_distance : float = 130.0           #Distância em que o inimigo irá começar a parar e trocar de state
 var initial_player_position : Vector2
 var is_stopping : bool = false
 
