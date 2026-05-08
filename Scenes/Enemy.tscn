@@ -36,8 +36,7 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("RectangleShape2D_mo1ky")
 
 [node name="BulletBuildComponent" parent="." unique_id=147864895 instance=ExtResource("6_mo1ky")]
-bullet_speed = 40
-bullets_color = "Purple"
+bullet_speed = 200
 
 [node name="BulletPatternMachine" type="Node2D" parent="." unique_id=253324263]
 script = ExtResource("4_1exfc")

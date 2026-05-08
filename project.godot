@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Hello Godot"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="uid://dcwsg4iou5fw4"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 

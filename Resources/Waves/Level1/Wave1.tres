@@ -7,8 +7,6 @@
 script = ExtResource("1_ss31s")
 wave_name = "Wave 1"
 enemy_scene = ExtResource("1_7sl8k")
-quantity = 8
+quantity = 36
 spawn_interval = 0.2
-spawn_position_1 = Vector2(0, -64)
-spawn_position_2 = Vector2(256, -128)
 metadata/_custom_type_script = "uid://bee6gkvbasa8r"

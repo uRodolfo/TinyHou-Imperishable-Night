@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bi5oxradmdbh6"
+path="res://.godot/imported/History of the Locked Dreams.mp3-86f7b5422c16ab5e7eb287c5163a769a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/History of the Locked Dreams.mp3"
+dest_files=["res://.godot/imported/History of the Locked Dreams.mp3-86f7b5422c16ab5e7eb287c5163a769a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

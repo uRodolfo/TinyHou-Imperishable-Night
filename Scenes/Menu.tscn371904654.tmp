@@ -15,16 +15,25 @@ font = SubResource("SystemFont_3kf3n")
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="InputEventKey" id="InputEventKey_s2c3o"]
+device = -1
+keycode = 90
+unicode = 122
+
 [sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_ma218"]
 button_index = 3
 
-[sub_resource type="InputEventAction" id="InputEventAction_s2c3o"]
-action = &"Shoot"
-
 [sub_resource type="Shortcut" id="Shortcut_ma218"]
-events = [SubResource("InputEventJoypadButton_ma218"), SubResource("InputEventAction_s2c3o")]
+events = [SubResource("InputEventKey_s2c3o"), SubResource("InputEventJoypadButton_ma218")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ma218"]
+keycode = 90
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_s2c3o"]
+button_index = 3
 
 [sub_resource type="Shortcut" id="Shortcut_idohh"]
+events = [SubResource("InputEventKey_ma218"), SubResource("InputEventJoypadButton_s2c3o")]
 
 [node name="Control" type="Control" unique_id=183168096]
 layout_mode = 3

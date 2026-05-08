@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_553yc")
-number_of_bullets = 5
-bullets_speed = 40
-spread_angle_deg = 30.0
+number_of_bullets = 10
+bullets_speed = 200
+spread_angle_deg = 50.0
+is_spread_radial = true
 bullets_direction = "Pattern to Player"
 metadata/_custom_type_script = "uid://cmibveo84g4j5"

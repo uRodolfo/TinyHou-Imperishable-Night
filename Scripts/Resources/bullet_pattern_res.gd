@@ -2,7 +2,7 @@ extends Resource
 class_name BulletPatternRes
 
 @export_category("Pattern Properties")
-@export var number_of_bullets := 1
+@export var number_of_bullets := 2
 @export var bullets_speed := 100
 @export var spawn_radius := 0.0
 @export_range(0.0, 360.0) var rotation_speed := 0.0
