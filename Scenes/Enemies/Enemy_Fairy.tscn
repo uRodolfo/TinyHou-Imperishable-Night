@@ -40,7 +40,7 @@ texture = ExtResource("2_wtxod")
 shape = SubResource("RectangleShape2D_cyls0")
 
 [node name="HealthComponent" parent="." unique_id=738414152 instance=ExtResource("3_mkaxl")]
-MAX_HEALTH = 4.0
+MAX_HEALTH = 3.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=106334204]
 rect = Rect2(-20, -20, 40, 40)
