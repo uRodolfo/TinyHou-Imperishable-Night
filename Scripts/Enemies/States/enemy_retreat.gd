@@ -15,7 +15,8 @@ func Enter():
 			screen_notifier.connect("screen_exited", on_screen_exited)
 	
 	#Calcular a direção do player (apenas uma vez para que o jogador não possa manipular a rota de fuga do inimigo)
-	player_direction = _player.global_position - _enemy.global_position     #Calcular a direção do player
+	if is_instance_valid(_player):
+		player_direction = _player.global_position - _enemy.global_position     #Calcular a direção do player
 	
 	#Diminuir a velocidade do inimigo para recuar mais devagar
 	_enemy.speed /= 3
