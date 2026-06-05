@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://ck623hbp4r1lu"]
 
 [ext_resource type="Script" uid="uid://lcwf42x4h4d" path="res://Scripts/Enemies/enemy_fairy.gd" id="1_umpng"]
+[ext_resource type="Shader" uid="uid://xf1m8bs1drhk" path="res://Shaders/Palette_swap.tres" id="2_22q0f"]
 [ext_resource type="Texture2D" uid="uid://deb8edrmw4rv0" path="res://Sprites/fadinha sprite touhou-Sheet.png" id="2_62n48"]
+[ext_resource type="Texture2D" uid="uid://cas2vxlbqghoe" path="res://Sprites/Palettes/sprites/Palette1.png" id="3_25kt7"]
 [ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="3_lul2l"]
 [ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="4_22q0f"]
+[ext_resource type="Texture2D" uid="uid://f021n81b1vdu" path="res://Sprites/Palettes/sprites/Palette2.png" id="4_qg1qr"]
 [ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="5_25kt7"]
 [ext_resource type="PackedScene" uid="uid://bar0o22hc07rl" path="res://Scenes/Enemies/EnemyBullets/BulletPatternGenerator.tscn" id="6_qg1qr"]
 [ext_resource type="Resource" uid="uid://dugrt5madqjuf" path="res://Resources/Strategies/Bullet Patterns/rotating_2_shots.tres" id="7_umpng"]
@@ -11,6 +14,12 @@
 [ext_resource type="Script" uid="uid://dbvjrskhhxs0b" path="res://Scripts/Enemies/States/enemy_descend.gd" id="9_5pm3g"]
 [ext_resource type="Script" uid="uid://c433nramgcaa" path="res://Scripts/Enemies/States/enemy_attack.gd" id="10_xidv3"]
 [ext_resource type="Script" uid="uid://3yxtxkh4hwx2" path="res://Scripts/Enemies/States/enemy_retreat_sideways.gd" id="11_gpk8u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jq125"]
+shader = ExtResource("2_22q0f")
+shader_parameter/original_palette = ExtResource("4_qg1qr")
+shader_parameter/new_palette = ExtResource("3_25kt7")
+shader_parameter/colors_count = 5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdcs2"]
 atlas = ExtResource("2_62n48")
@@ -60,10 +69,12 @@ collision_mask = 0
 script = ExtResource("1_umpng")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2047981984]
+material = SubResource("ShaderMaterial_jq125")
 sprite_frames = SubResource("SpriteFrames_cdnfm")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1019554684]
+visible = false
 shape = SubResource("RectangleShape2D_cyls0")
 
 [node name="HealthComponent" parent="." unique_id=738414152 instance=ExtResource("3_lul2l")]
@@ -71,6 +82,7 @@ MAX_HEALTH = 115.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=106334204]
 rect = Rect2(-20, -20, 40, 40)
+show_rect = false
 
 [node name="HitboxComponent" parent="." unique_id=903758762 node_paths=PackedStringArray("health_component") instance=ExtResource("4_22q0f")]
 collision_layer = 4
@@ -78,6 +90,7 @@ collision_mask = 0
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=622376032]
+visible = false
 shape = SubResource("RectangleShape2D_d5l16")
 
 [node name="BulletBuildComponent" parent="." unique_id=147864895 instance=ExtResource("5_25kt7")]

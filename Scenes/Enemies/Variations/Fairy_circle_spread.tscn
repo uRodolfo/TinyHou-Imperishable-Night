@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://bw6dyilmm1ag3"]
 
 [ext_resource type="Script" uid="uid://lcwf42x4h4d" path="res://Scripts/Enemies/enemy_fairy.gd" id="1_yomqw"]
+[ext_resource type="Shader" uid="uid://xf1m8bs1drhk" path="res://Shaders/Palette_swap.tres" id="2_2gxvv"]
 [ext_resource type="Texture2D" uid="uid://deb8edrmw4rv0" path="res://Sprites/fadinha sprite touhou-Sheet.png" id="2_yomqw"]
+[ext_resource type="Texture2D" uid="uid://cas2vxlbqghoe" path="res://Sprites/Palettes/sprites/Palette1.png" id="3_8aja3"]
 [ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="3_40cyv"]
+[ext_resource type="Texture2D" uid="uid://f021n81b1vdu" path="res://Sprites/Palettes/sprites/Palette2.png" id="4_p722i"]
 [ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="4_xy51r"]
 [ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="5_yhu81"]
 [ext_resource type="PackedScene" uid="uid://bar0o22hc07rl" path="res://Scenes/Enemies/EnemyBullets/BulletPatternGenerator.tscn" id="6_cdnfm"]
@@ -11,6 +14,12 @@
 [ext_resource type="Script" uid="uid://dbvjrskhhxs0b" path="res://Scripts/Enemies/States/enemy_descend.gd" id="10_heukn"]
 [ext_resource type="Script" uid="uid://c433nramgcaa" path="res://Scripts/Enemies/States/enemy_attack.gd" id="10_vcq1q"]
 [ext_resource type="Script" uid="uid://3yxtxkh4hwx2" path="res://Scripts/Enemies/States/enemy_retreat_sideways.gd" id="11_05ivs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y17gp"]
+shader = ExtResource("2_2gxvv")
+shader_parameter/original_palette = ExtResource("4_p722i")
+shader_parameter/new_palette = ExtResource("3_8aja3")
+shader_parameter/colors_count = 5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdcs2"]
 atlas = ExtResource("2_yomqw")
@@ -60,6 +69,7 @@ collision_mask = 0
 script = ExtResource("1_yomqw")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2047981984]
+material = SubResource("ShaderMaterial_y17gp")
 sprite_frames = SubResource("SpriteFrames_cdnfm")
 autoplay = "default"
 
