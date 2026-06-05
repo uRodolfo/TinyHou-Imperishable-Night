@@ -1,13 +1,9 @@
 extends Node
 
-signal points_updated(new_points)
+var points: int = 0
+var player_health : int = 3
 
-var points: float = 0:
-	set(value):
-		points = value
-		points_updated.emit(points)
-
-func add_points(value: float):
+func add_points(value: int):
 	points += value
 	print("Pontos agora: ", points)
 
@@ -19,3 +15,4 @@ func spawn_point(posicao: Vector2):
 
 func _on_point_colided():
 	add_points(10)
+	print(points)

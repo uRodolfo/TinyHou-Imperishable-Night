@@ -2,6 +2,7 @@ extends Node2D
 
 var canshoot = true              #True para poder atirar/Falso para não poder atirar
 var is_shooting = false           #Determina se o jogador está atirando ou não (toggle)
+var bombs_qtd : int = 3          #Determina a quantidade de bombs que o jogador possui
 
 var Player_bullet = preload("res://Scenes/Playerbullet.tscn") # Bala do jogador
 
@@ -22,6 +23,8 @@ func shoot():
 
 #Método para a mecânica de bomb
 func bomb():
-	var all_bullets = get_tree().get_nodes_in_group("Enemy_Bullets")
-	for bullet in all_bullets:
-		bullet.queue_free()
+	if bombs_qtd > 0:
+		bombs_qtd -= 1
+		var all_bullets = get_tree().get_nodes_in_group("Enemy_Bullets")
+		for bullet in all_bullets:
+			bullet.queue_free()
