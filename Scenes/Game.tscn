@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b87iqj14agf4f"]
 
+[ext_resource type="Script" uid="uid://dc2xrwylq2fr4" path="res://Scripts/HUD/level_controller.gd" id="1_x3xnh"]
 [ext_resource type="PackedScene" uid="uid://xlwffpmjt6iv" path="res://Scenes/Player.tscn" id="1_y700s"]
 [ext_resource type="AudioStream" uid="uid://eydt6tn3a6ja" path="res://Sounds/Music/locked girl.mp3" id="3_j5yw3"]
 [ext_resource type="Script" uid="uid://k5ofdchbi8r7" path="res://Scripts/enemy_spawn_manager.gd" id="3_kldst"]
@@ -198,9 +199,10 @@ _data = {
 &"Enemy_Spawn_Player": SubResource("Animation_b2bpf")
 }
 
-[node name="Node2D" type="Control" unique_id=132443385]
+[node name="LevelController" type="Control" unique_id=132443385]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_x3xnh")
 
 [node name="Panel" type="Panel" parent="." unique_id=1057136605]
 layout_mode = 0

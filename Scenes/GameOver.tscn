@@ -1,5 +1,27 @@
 [gd_scene format=3 uid="uid://c4bunapu1fjdy"]
 
+[ext_resource type="Script" uid="uid://b4jbmys8yjvau" path="res://Scripts/game_over_screen.gd" id="1_ktc4i"]
+[ext_resource type="FontFile" uid="uid://rvlkcvw10qpq" path="res://Fonts/m3x6.ttf" id="1_m5628"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qg30o"]
+bg_color = Color(0.5803922, 0, 0.5176471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k52d1"]
+font = ExtResource("1_m5628")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktc4i"]
+font = ExtResource("1_m5628")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_rdiyk"]
+font = ExtResource("1_m5628")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_uib17"]
+font = ExtResource("1_m5628")
+font_size = 32
+
 [node name="Control" type="Control" unique_id=1230449085]
 layout_mode = 3
 anchors_preset = 15
@@ -7,8 +29,63 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ktc4i")
 
 [node name="Panel" type="Panel" parent="." unique_id=2139130372]
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 256.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qg30o")
+
+[node name="GameOver" type="Label" parent="." unique_id=115437422]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 216.0
+offset_bottom = 57.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_k52d1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="." unique_id=1249586613]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 80.0
+offset_right = 86.0
+offset_bottom = 106.0
+text = "Score:"
+label_settings = SubResource("LabelSettings_ktc4i")
+
+[node name="ScorePoints" type="Label" parent="." unique_id=1117301902]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 80.0
+offset_right = 202.0
+offset_bottom = 106.0
+label_settings = SubResource("LabelSettings_rdiyk")
+
+[node name="Label" type="Label" parent="." unique_id=214345834]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 122.0
+offset_right = 190.0
+offset_bottom = 148.0
+text = "Type your name:"
+label_settings = SubResource("LabelSettings_uib17")
+
+[node name="Type" type="LineEdit" parent="." unique_id=475314566]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 156.0
+offset_right = 188.0
+offset_bottom = 187.0
+
+[node name="Button" type="Button" parent="." unique_id=2012381971]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 202.0
+offset_right = 148.0
+offset_bottom = 233.0
+text = "Quit"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_pressed"]
