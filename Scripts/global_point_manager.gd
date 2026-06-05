@@ -1,8 +1,9 @@
 extends Node
 
-var points: float = 0
+var points: int = 0
+var player_health : int = 3
 
-func add_points(value: float):
+func add_points(value: int):
 	points += value
 	print("Pontos agora: ", points)
 

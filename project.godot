@@ -41,6 +41,18 @@ window/layer_3="Enemies"
 
 project/assembly_name="Hello Godot"
 
+[file_customization]
+
+folder_colors={
+"res://Fonts/": "orange",
+"res://Resources/": "red",
+"res://Scenes/": "teal",
+"res://Scripts/": "blue",
+"res://Shaders/": "green",
+"res://Sounds/": "purple",
+"res://Sprites/": "yellow"
+}
+
 [global_group]
 
 Enemy_Bullets=""
