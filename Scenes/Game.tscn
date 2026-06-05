@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://b61r7rrldgqa1" path="res://Resources/Waves/Level1/Wave_1_Shot_Grow_Left.tres" id="12_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://djl7bgylgeqyi" path="res://Scenes/Enemies/Variations/Fairy_1_shot_grow.tscn" id="12_3so38"]
 [ext_resource type="Resource" uid="uid://bynk072cmsrro" path="res://Resources/Waves/Level1/Wave_Rotating_2Shot.tres" id="14_wxwew"]
+[ext_resource type="Script" uid="uid://ym2a76b7nndu" path="res://Scenes/Ui.gd" id="15_acvyw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2irst"]
 texture = ExtResource("7_fgofq")
@@ -231,3 +232,14 @@ waves = Array[ExtResource("4_b2bpf")]([SubResource("Resource_7lihs"), SubResourc
 [node name="EnemySpawnPlayer" type="AnimationPlayer" parent="EnemySpawnManager" unique_id=1260174628]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_7lihs")
+
+[node name="Control" type="Control" parent="." unique_id=1957603126]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("15_acvyw")
+
+[node name="Label" type="Label" parent="Control" unique_id=1004487316]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
