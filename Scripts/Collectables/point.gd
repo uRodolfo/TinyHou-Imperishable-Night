@@ -2,7 +2,7 @@ extends Area2D
 
 var velocity = Vector2.ZERO
 var _gravity = 100.0
-var initial_up_impulse = -150.0  # Força inicial para subir
+var initial_up_impulse = -90.0  # Força inicial para subir
 
 signal colided
 

@@ -27,6 +27,7 @@ buses/default_bus_layout="uid://dd616rglr2f03"
 
 global_point_manager="*uid://bticfv1v0rxd4"
 save_manager="*uid://cucvhik60dbkb"
+music_manager="*uid://b6b5wb12ldx2o"
 
 [display]
 

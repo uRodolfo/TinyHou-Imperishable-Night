@@ -10,6 +10,7 @@ func _ready():
 	current_score = global_point_manager.points  
 	label_score.text = str(current_score)
 	call_deferred("set_foco")  # espera um frame
+	music_manager.music_player.play()
 
 func set_foco():
 	line_edit_name.grab_focus()

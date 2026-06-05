@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://brkdismy6m1w6" path="res://Sprites/images.jpg" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://ct45igkl74v8k" path="res://Scripts/Menu/button_manager.gd" id="1_syfuq"]
-[ext_resource type="AudioStream" uid="uid://bi5oxradmdbh6" path="res://Sounds/Music/History of the Locked Dreams.mp3" id="3_syfuq"]
 [ext_resource type="AudioStream" uid="uid://bdyp4on3dlei4" path="res://Sounds/Sfx/se_select00.wav" id="4_s2c3o"]
 [ext_resource type="FontFile" uid="uid://rvlkcvw10qpq" path="res://Fonts/m3x6.ttf" id="5_idohh"]
 [ext_resource type="Script" uid="uid://1y2u7ur80cq4" path="res://Scripts/highscores.gd" id="5_ma218"]
@@ -73,14 +72,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Quit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1182169657]
-stream = ExtResource("3_syfuq")
-volume_db = -5.0
-autoplay = true
-bus = &"Music"
-parameters/looping = true
-
-[node name="SeSelect00" type="AudioStreamPlayer" parent="." unique_id=484930165]
+[node name="Select" type="AudioStreamPlayer" parent="." unique_id=484930165]
 stream = ExtResource("4_s2c3o")
 volume_db = -20.0
 
