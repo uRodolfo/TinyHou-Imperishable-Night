@@ -8,6 +8,8 @@ var speed : float
 var acceleration : float
 var move_direction : Vector2 = Vector2.ZERO
 
+@onready var HealthComponent := $HealthComponent #Componente que faz a lógica de vida
+
 func _ready() -> void:
 	speed = MAX_SPEED
 	acceleration = MAX_ACCELERATION
@@ -21,9 +23,15 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, delta * acceleration)
 		
 	move_and_slide()
+	
+	if HealthComponent.health <= 0:
+		_on_enemy_died()
 
 func _on_hitbox_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		var hitbox : HitboxComponent = area
 		hitbox.damage(1)
-		queue_free()
+		
+
+func _on_enemy_died():
+	global_point_manager.spawn_point(position)

@@ -7,11 +7,11 @@ var speed = 300                  #Velocidade atual do jogador
 @export var focusSpeed = 40     #Velocidade Focus do jogador (Shift)
 var direction = Vector2.ZERO
 
+
 #Nodes
 @onready var _player_shooting := $PlayerShootingComponent #Lógica de tiros do jogador
 @onready var _shoot_key_interval := $ShootKeyInterval #Tempo para segurar o botão para alternar o modo de tiro
 @onready var health_component := $HealthComponent #Componente que faz a lógica de vida
-
 
 func _physics_process(delta):
 	velocity = direction.normalized() * speed
