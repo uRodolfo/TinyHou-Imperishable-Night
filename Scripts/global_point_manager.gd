@@ -2,6 +2,7 @@ extends Node
 
 var points: int = 0
 var player_health : int = 3
+var player_bombs : int = 3
 
 func add_points(value: int):
 	points += value

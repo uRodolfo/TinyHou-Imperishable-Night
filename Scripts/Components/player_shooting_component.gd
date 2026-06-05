@@ -25,6 +25,7 @@ func shoot():
 func bomb():
 	if bombs_qtd > 0:
 		bombs_qtd -= 1
+		global_point_manager.player_bombs = bombs_qtd
 		var all_bullets = get_tree().get_nodes_in_group("Enemy_Bullets")
 		for bullet in all_bullets:
 			bullet.queue_free()

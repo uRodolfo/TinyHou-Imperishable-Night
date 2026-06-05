@@ -17,6 +17,7 @@
 [ext_resource type="FontFile" uid="uid://rvlkcvw10qpq" path="res://Fonts/m3x6.ttf" id="15_acvyw"]
 [ext_resource type="Script" uid="uid://cke32kqqn0ejw" path="res://Scripts/HUD/disp_hp.gd" id="16_alh3a"]
 [ext_resource type="Script" uid="uid://dauofuciiwx2t" path="res://Scripts/HUD/disp_score.gd" id="17_4q8tf"]
+[ext_resource type="Script" uid="uid://d5o87urtoge2" path="res://Scripts/HUD/disp_bombs.gd" id="18_x3xnh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2irst"]
 texture = ExtResource("7_fgofq")
@@ -246,18 +247,18 @@ offset_bottom = 240.0
 [node name="HP" type="Label" parent="UI/Control" unique_id=1122099242]
 layout_mode = 0
 offset_left = 176.0
-offset_top = 200.0
+offset_top = 184.0
 offset_right = 186.0
-offset_bottom = 216.0
+offset_bottom = 200.0
 theme_override_fonts/font = ExtResource("15_acvyw")
 text = "HP:"
 
 [node name="DispHP" type="Label" parent="UI/Control" unique_id=1573162938]
 layout_mode = 0
 offset_left = 188.0
-offset_top = 200.0
+offset_top = 184.0
 offset_right = 228.0
-offset_bottom = 216.0
+offset_bottom = 200.0
 theme_override_fonts/font = ExtResource("15_acvyw")
 text = "3"
 script = ExtResource("16_alh3a")
@@ -280,3 +281,22 @@ offset_bottom = 232.0
 theme_override_fonts/font = ExtResource("15_acvyw")
 text = "0"
 script = ExtResource("17_4q8tf")
+
+[node name="Bombs" type="Label" parent="UI/Control" unique_id=601954884]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 200.0
+offset_right = 186.0
+offset_bottom = 216.0
+theme_override_fonts/font = ExtResource("15_acvyw")
+text = "Bombs:"
+
+[node name="DispBombs" type="Label" parent="UI/Control" unique_id=524906457]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 200.0
+offset_right = 242.0
+offset_bottom = 216.0
+theme_override_fonts/font = ExtResource("15_acvyw")
+text = "3"
+script = ExtResource("18_x3xnh")
