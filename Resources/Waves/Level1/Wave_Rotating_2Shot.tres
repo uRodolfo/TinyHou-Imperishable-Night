@@ -8,6 +8,6 @@ script = ExtResource("2_notfc")
 wave_name = "Tank Circle Spreads"
 enemy_scene = ExtResource("1_wddvv")
 spawn_interval = 0.2
-spawn_position_1 = Vector2(128, -64)
+spawn_position_1 = Vector2(80, -64)
 spawn_position_2 = Vector2(0, 0)
 metadata/_custom_type_script = "uid://bee6gkvbasa8r"

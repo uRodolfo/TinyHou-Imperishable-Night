@@ -179,6 +179,13 @@ one_shot = true
 script = ExtResource("7_bhhdu")
 MAX_HEALTH = 3.0
 
+[node name="IFramesTimer" type="Timer" parent="HealthComponent" unique_id=536079050]
+wait_time = 3.0
+one_shot = true
+
+[node name="IFramesBlinkInterval" type="Timer" parent="HealthComponent" unique_id=556735395]
+wait_time = 0.1
+
 [node name="HitboxComponent" parent="." unique_id=903758762 node_paths=PackedStringArray("health_component") instance=ExtResource("6_nn08x")]
 collision_layer = 2
 collision_mask = 68
@@ -191,3 +198,5 @@ shape = SubResource("CircleShape2D_fnolj")
 [connection signal="animation_finished" from="PlayerAnimation/AnimatedSprite2D" to="PlayerAnimation" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="PlayerShootingComponent/Shootspeed" to="PlayerShootingComponent" method="_on_shootspeed_timeout"]
 [connection signal="timeout" from="ShootKeyInterval" to="." method="_on_shoot_key_interval_timeout"]
+[connection signal="timeout" from="HealthComponent/IFramesTimer" to="HealthComponent" method="_on_i_frames_timer_timeout"]
+[connection signal="timeout" from="HealthComponent/IFramesBlinkInterval" to="HealthComponent" method="_on_i_frames_blink_interval_timeout"]

@@ -2,6 +2,7 @@ extends Node
 
 var points: int = 0
 var player_health : int = 3
+var player_bombs : int = 3
 
 func add_points(value: int):
 	points += value
@@ -14,5 +15,5 @@ func spawn_point(posicao: Vector2):
 	get_tree().current_scene.add_child(point)
 
 func _on_point_colided():
-	add_points(10)
+	add_points(100)
 	print(points)
