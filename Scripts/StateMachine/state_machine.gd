@@ -40,3 +40,7 @@ func on_child_transition(state, new_state_name):
 	new_state.Enter()
 	
 	current_state = new_state
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	pass # Replace with function body.

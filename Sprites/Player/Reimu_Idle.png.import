@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8tqqb1v0ksxn"
-path="res://.godot/imported/Reimu_left.png-b7404dbd45175c9f41555826556858b6.ctex"
+uid="uid://cd38ysc7blhlp"
+path="res://.godot/imported/Reimu_Idle.png-ca3621e4d58ac759a5384f69fe7ea722.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/Reimu_left.png"
-dest_files=["res://.godot/imported/Reimu_left.png-b7404dbd45175c9f41555826556858b6.ctex"]
+source_file="res://Sprites/Player/Reimu_Idle.png"
+dest_files=["res://.godot/imported/Reimu_Idle.png-ca3621e4d58ac759a5384f69fe7ea722.ctex"]
 
 [params]
 

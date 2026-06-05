@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://b61r7rrldgqa1"]
+
+[ext_resource type="PackedScene" uid="uid://djl7bgylgeqyi" path="res://Scenes/Enemies/Variations/Fairy_1_shot_grow.tscn" id="1_bov00"]
+[ext_resource type="Script" uid="uid://bee6gkvbasa8r" path="res://Scripts/Resources/wavedata.gd" id="2_qiotw"]
+
+[resource]
+script = ExtResource("2_qiotw")
+wave_name = "1Shot Grow Left"
+enemy_scene = ExtResource("1_bov00")
+quantity = 3
+spawn_interval = 0.2
+spawn_position_1 = Vector2(-64, 0)
+spawn_position_2 = Vector2(0, -64)
+metadata/_custom_type_script = "uid://bee6gkvbasa8r"

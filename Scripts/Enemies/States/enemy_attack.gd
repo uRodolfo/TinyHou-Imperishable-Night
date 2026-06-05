@@ -6,7 +6,7 @@ class_name EnemyAttack
 @export var attack_phase_duration_sec : float = 0.1
 
 var phase_duration_counter_sec : float = 0.0
-
+		
 func Enter():
 	phase_duration_counter_sec = attack_phase_duration_sec
 	

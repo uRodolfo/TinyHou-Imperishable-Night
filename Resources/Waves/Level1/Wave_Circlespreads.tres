@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://ci3skwin53tl"]
+
+[ext_resource type="PackedScene" uid="uid://bw6dyilmm1ag3" path="res://Scenes/Enemies/Variations/Fairy_circle_spread.tscn" id="1_qd8vs"]
+[ext_resource type="Script" uid="uid://bee6gkvbasa8r" path="res://Scripts/Resources/wavedata.gd" id="2_a7ct1"]
+
+[resource]
+script = ExtResource("2_a7ct1")
+wave_name = "Circle Spreads"
+enemy_scene = ExtResource("1_qd8vs")
+quantity = 10
+spawn_interval = 0.2
+spawn_position_1 = Vector2(64, -64)
+spawn_position_2 = Vector2(192, -128)
+metadata/_custom_type_script = "uid://bee6gkvbasa8r"

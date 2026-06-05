@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e0sprenuybb6"
-path="res://.godot/imported/reimu_idle_test.png-be5e039d5aa46463d3818e3f709d483b.ctex"
+uid="uid://bttd5tsbvt8d0"
+path="res://.godot/imported/Reimu_Moving_Left.png-8d7fac34c6e0c2dc6fa059e0d47aaec7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/reimu_idle_test.png"
-dest_files=["res://.godot/imported/reimu_idle_test.png-be5e039d5aa46463d3818e3f709d483b.ctex"]
+source_file="res://Sprites/Player/Reimu_Moving_Left.png"
+dest_files=["res://.godot/imported/Reimu_Moving_Left.png-8d7fac34c6e0c2dc6fa059e0d47aaec7.ctex"]
 
 [params]
 

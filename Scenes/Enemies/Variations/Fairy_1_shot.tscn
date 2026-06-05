@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://qbj38u4jhxry"]
+
+[ext_resource type="Script" uid="uid://lcwf42x4h4d" path="res://Scripts/Enemies/enemy_fairy.gd" id="1_dj0bn"]
+[ext_resource type="Texture2D" uid="uid://deb8edrmw4rv0" path="res://Sprites/fadinha sprite touhou-Sheet.png" id="2_j0owd"]
+[ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="3_pwwwm"]
+[ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="4_e03p2"]
+[ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="5_fadi0"]
+[ext_resource type="PackedScene" uid="uid://bar0o22hc07rl" path="res://Scenes/Enemies/EnemyBullets/BulletPatternGenerator.tscn" id="6_uouui"]
+[ext_resource type="Resource" uid="uid://c5wdru4ybpujg" path="res://Resources/Strategies/Bullet Patterns/1_shot.tres" id="7_dj0bn"]
+[ext_resource type="Script" uid="uid://b12f1hoxv7qnr" path="res://Scripts/StateMachine/state_machine.gd" id="8_e0gv6"]
+[ext_resource type="Script" uid="uid://lq0dppnaudrq" path="res://Scripts/Enemies/States/enemy_approach.gd" id="9_1yl7y"]
+[ext_resource type="Script" uid="uid://c433nramgcaa" path="res://Scripts/Enemies/States/enemy_attack.gd" id="10_0y3ak"]
+[ext_resource type="Script" uid="uid://cv5j40p5sy3ef" path="res://Scripts/Enemies/States/enemy_retreat.gd" id="11_1vob1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtxod"]
+atlas = ExtResource("2_j0owd")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkaxl"]
+atlas = ExtResource("2_j0owd")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnciq"]
+atlas = ExtResource("2_j0owd")
+region = Rect2(16, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6cmu"]
+atlas = ExtResource("2_j0owd")
+region = Rect2(24, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r158q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtxod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkaxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnciq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6cmu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyls0"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5l16"]
+size = Vector2(16, 16)
+
+[node name="Enemy_Fairy" type="CharacterBody2D" unique_id=1986242539]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_dj0bn")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=525883189]
+sprite_frames = SubResource("SpriteFrames_r158q")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1019554684]
+shape = SubResource("RectangleShape2D_cyls0")
+
+[node name="HealthComponent" parent="." unique_id=738414152 instance=ExtResource("3_pwwwm")]
+MAX_HEALTH = 2.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=106334204]
+rect = Rect2(-20, -20, 40, 40)
+
+[node name="HitboxComponent" parent="." unique_id=903758762 node_paths=PackedStringArray("health_component") instance=ExtResource("4_e03p2")]
+collision_layer = 4
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=622376032]
+shape = SubResource("RectangleShape2D_d5l16")
+
+[node name="BulletBuildComponent" parent="." unique_id=147864895 instance=ExtResource("5_fadi0")]
+
+[node name="BulletPatternGenerator" parent="." unique_id=1848085657 node_paths=PackedStringArray("bullet_build_component") instance=ExtResource("6_uouui")]
+bullet_build_component = NodePath("../BulletBuildComponent")
+bp_res = ExtResource("7_dj0bn")
+
+[node name="StateMachine" type="Node" parent="." unique_id=629920974 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("8_e0gv6")
+initial_state = NodePath("Approach")
+
+[node name="Approach" type="Node" parent="StateMachine" unique_id=1812378479]
+script = ExtResource("9_1yl7y")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1182230330]
+script = ExtResource("10_0y3ak")
+
+[node name="Retreat" type="Node" parent="StateMachine" unique_id=1340820569]
+script = ExtResource("11_1vob1")

@@ -7,7 +7,6 @@ extends Node
 var current_wave : int = 0
 
 func _ready() -> void:
-	start_next_wave()
 	enemy_spawn_player.play("Enemy_Spawn_Player")
 
 func start_next_wave() -> void:

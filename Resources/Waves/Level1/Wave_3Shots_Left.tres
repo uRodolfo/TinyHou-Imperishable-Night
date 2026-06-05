@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://cadv6q2fh2cll"]
+
+[ext_resource type="PackedScene" uid="uid://c4cm5skpfvfvm" path="res://Scenes/Enemies/Variations/Fairy_3_shots.tscn" id="1_r8fdx"]
+[ext_resource type="Script" uid="uid://bee6gkvbasa8r" path="res://Scripts/Resources/wavedata.gd" id="2_l4o2a"]
+
+[resource]
+script = ExtResource("2_l4o2a")
+wave_name = "3Shots Left"
+enemy_scene = ExtResource("1_r8fdx")
+quantity = 10
+spawn_interval = 0.2
+spawn_position_1 = Vector2(-64, 0)
+spawn_position_2 = Vector2(0, -64)
+metadata/_custom_type_script = "uid://bee6gkvbasa8r"

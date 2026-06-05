@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://45n5opc8rdl4"]
+
+[ext_resource type="PackedScene" uid="uid://c4cm5skpfvfvm" path="res://Scenes/Enemies/Variations/Fairy_3_shots.tscn" id="1_5dfrt"]
+[ext_resource type="Script" uid="uid://bee6gkvbasa8r" path="res://Scripts/Resources/wavedata.gd" id="2_hulmn"]
+
+[resource]
+script = ExtResource("2_hulmn")
+wave_name = "3Shots Right"
+enemy_scene = ExtResource("1_5dfrt")
+quantity = 10
+spawn_interval = 0.2
+spawn_position_1 = Vector2(256, 0)
+spawn_position_2 = Vector2(320, -64)
+metadata/_custom_type_script = "uid://bee6gkvbasa8r"

@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://ck623hbp4r1lu"]
+
+[ext_resource type="Script" uid="uid://lcwf42x4h4d" path="res://Scripts/Enemies/enemy_fairy.gd" id="1_umpng"]
+[ext_resource type="Texture2D" uid="uid://deb8edrmw4rv0" path="res://Sprites/fadinha sprite touhou-Sheet.png" id="2_62n48"]
+[ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="3_lul2l"]
+[ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="4_22q0f"]
+[ext_resource type="PackedScene" uid="uid://dlp16s0cjhkx5" path="res://Scenes/Components/bullet_build_component.tscn" id="5_25kt7"]
+[ext_resource type="PackedScene" uid="uid://bar0o22hc07rl" path="res://Scenes/Enemies/EnemyBullets/BulletPatternGenerator.tscn" id="6_qg1qr"]
+[ext_resource type="Resource" uid="uid://dugrt5madqjuf" path="res://Resources/Strategies/Bullet Patterns/rotating_2_shots.tres" id="7_umpng"]
+[ext_resource type="Script" uid="uid://b12f1hoxv7qnr" path="res://Scripts/StateMachine/state_machine.gd" id="8_ok28h"]
+[ext_resource type="Script" uid="uid://dbvjrskhhxs0b" path="res://Scripts/Enemies/States/enemy_descend.gd" id="9_5pm3g"]
+[ext_resource type="Script" uid="uid://c433nramgcaa" path="res://Scripts/Enemies/States/enemy_attack.gd" id="10_xidv3"]
+[ext_resource type="Script" uid="uid://3yxtxkh4hwx2" path="res://Scripts/Enemies/States/enemy_retreat_sideways.gd" id="11_gpk8u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdcs2"]
+atlas = ExtResource("2_62n48")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40cyv"]
+atlas = ExtResource("2_62n48")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy51r"]
+atlas = ExtResource("2_62n48")
+region = Rect2(16, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhu81"]
+atlas = ExtResource("2_62n48")
+region = Rect2(24, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cdnfm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdcs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40cyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy51r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhu81")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyls0"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5l16"]
+size = Vector2(16, 16)
+
+[node name="Enemy_Fairy" type="CharacterBody2D" unique_id=1986242539]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_umpng")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2047981984]
+sprite_frames = SubResource("SpriteFrames_cdnfm")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1019554684]
+shape = SubResource("RectangleShape2D_cyls0")
+
+[node name="HealthComponent" parent="." unique_id=738414152 instance=ExtResource("3_lul2l")]
+MAX_HEALTH = 115.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=106334204]
+rect = Rect2(-20, -20, 40, 40)
+
+[node name="HitboxComponent" parent="." unique_id=903758762 node_paths=PackedStringArray("health_component") instance=ExtResource("4_22q0f")]
+collision_layer = 4
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=622376032]
+shape = SubResource("RectangleShape2D_d5l16")
+
+[node name="BulletBuildComponent" parent="." unique_id=147864895 instance=ExtResource("5_25kt7")]
+bullets_color = "Purple"
+
+[node name="BulletPatternGenerator" parent="." unique_id=1848085657 node_paths=PackedStringArray("bullet_build_component") instance=ExtResource("6_qg1qr")]
+bullet_build_component = NodePath("../BulletBuildComponent")
+bp_res = ExtResource("7_umpng")
+
+[node name="StateMachine" type="Node" parent="." unique_id=629920974 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("8_ok28h")
+initial_state = NodePath("Descend")
+
+[node name="Descend" type="Node" parent="StateMachine" unique_id=281654313]
+script = ExtResource("9_5pm3g")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1182230330]
+script = ExtResource("10_xidv3")
+attack_phase_duration_sec = 15.0
+
+[node name="Retreat" type="Node" parent="StateMachine" unique_id=1508960493]
+script = ExtResource("11_gpk8u")

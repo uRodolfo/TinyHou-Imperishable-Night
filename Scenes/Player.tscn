@@ -1,76 +1,76 @@
 [gd_scene format=3 uid="uid://xlwffpmjt6iv"]
 
 [ext_resource type="Script" uid="uid://bkwun6hm6eecr" path="res://Scripts/Player/player.gd" id="1_yvgu0"]
-[ext_resource type="Texture2D" uid="uid://dy17wa3jqcq71" path="res://Sprites/Player/Reimu Idle.png" id="3_52ee3"]
+[ext_resource type="Texture2D" uid="uid://cd38ysc7blhlp" path="res://Sprites/Player/Reimu_Idle.png" id="3_52ee3"]
 [ext_resource type="Script" uid="uid://myetvtfb1rxr" path="res://Scripts/Components/player_shooting_component.gd" id="3_gntrk"]
-[ext_resource type="Texture2D" uid="uid://8tqqb1v0ksxn" path="res://Sprites/Player/Reimu_left.png" id="4_bhhdu"]
+[ext_resource type="Texture2D" uid="uid://bttd5tsbvt8d0" path="res://Sprites/Player/Reimu_Moving_Left.png" id="4_bhhdu"]
 [ext_resource type="Script" uid="uid://b6j556kixxgjp" path="res://Scripts/Player/player_animation.gd" id="4_dewec"]
 [ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="5_5ixxa"]
 [ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="6_nn08x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_megsn"]
 atlas = ExtResource("3_52ee3")
-region = Rect2(1, 2, 18, 24)
+region = Rect2(0, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yoq75"]
 atlas = ExtResource("3_52ee3")
-region = Rect2(19, 2, 18, 24)
+region = Rect2(16, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ksbbd"]
 atlas = ExtResource("3_52ee3")
-region = Rect2(37, 2, 18, 24)
+region = Rect2(32, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_glx4g"]
 atlas = ExtResource("3_52ee3")
-region = Rect2(55, 2, 18, 24)
+region = Rect2(48, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_miouo"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(1, 2, 18, 24)
+region = Rect2(48, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3h8g"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(19, 2, 18, 24)
+region = Rect2(64, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1e7my"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(37, 2, 18, 24)
+region = Rect2(80, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arntx"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(55, 2, 18, 24)
+region = Rect2(96, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lslt6"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(73, 2, 18, 24)
+region = Rect2(112, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ulo2v"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(91, 2, 18, 24)
+region = Rect2(128, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1iu4k"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(109, 2, 18, 24)
+region = Rect2(144, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0x7a"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(127, 2, 18, 24)
+region = Rect2(160, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5v66d"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(145, 2, 18, 24)
+region = Rect2(176, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x63xi"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(163, 2, 18, 24)
+region = Rect2(0, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i2e8t"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(181, 2, 18, 24)
+region = Rect2(16, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qidb7"]
 atlas = ExtResource("4_bhhdu")
-region = Rect2(199, 2, 18, 24)
+region = Rect2(32, 0, 16, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_miouo"]
 animations = [{
@@ -118,7 +118,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5v66d")
+}],
+"loop": true,
+"name": &"Moving_Left_Loop",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x63xi")
 }, {
@@ -128,28 +133,28 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qidb7")
 }],
-"loop": true,
-"name": &"Moving_Left",
-"speed": 5.0
+"loop": false,
+"name": &"Moving_Left_Startup",
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn08x"]
 size = Vector2(8, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fnolj"]
-radius = 2.0
+radius = 3.0
 
 [node name="Player" type="CharacterBody2D" unique_id=579317780 groups=["Player"]]
 collision_mask = 9
 script = ExtResource("1_yvgu0")
 baseSpeed = 100
 
-[node name="Player_Animation" type="Node2D" parent="." unique_id=1677435510]
+[node name="PlayerAnimation" type="Node2D" parent="." unique_id=1677435510]
 script = ExtResource("4_dewec")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player_Animation" unique_id=2101067525]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerAnimation" unique_id=2101067525]
 sprite_frames = SubResource("SpriteFrames_miouo")
-animation = &"Moving_Left"
+animation = &"Moving_Left_Startup"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474224150]
 modulate = Color(0, 0, 0, 1)
@@ -181,5 +186,6 @@ health_component = NodePath("../HealthComponent")
 modulate = Color(0, 0, 0, 1)
 shape = SubResource("CircleShape2D_fnolj")
 
+[connection signal="animation_finished" from="PlayerAnimation/AnimatedSprite2D" to="PlayerAnimation" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="PlayerShootingComponent/Shootspeed" to="PlayerShootingComponent" method="_on_shootspeed_timeout"]
 [connection signal="timeout" from="ShootKeyInterval" to="." method="_on_shoot_key_interval_timeout"]
