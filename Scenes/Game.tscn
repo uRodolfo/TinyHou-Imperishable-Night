@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://xpk2yanqwrhq" path="res://Sprites/HUD/HUD_Original_Stars_8x8.png" id="15_4q8tf"]
 [ext_resource type="FontFile" uid="uid://rvlkcvw10qpq" path="res://Fonts/m3x6.ttf" id="15_acvyw"]
 [ext_resource type="Script" uid="uid://vjuw6tyhylon" path="res://Scripts/HUD/bombs_container.gd" id="15_alh3a"]
-[ext_resource type="Script" uid="uid://dauofuciiwx2t" path="res://Scripts/HUD/disp_score.gd" id="17_4q8tf"]
+[ext_resource type="Script" uid="uid://cb5h3ujs6qx8f" path="res://Scripts/HUD/disp_score.gd" id="17_4q8tf"]
 [ext_resource type="FontFile" uid="uid://cahu5q36jrawg" path="res://Fonts/HUD Numbers 8x8.png" id="17_x3xnh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2irst"]
