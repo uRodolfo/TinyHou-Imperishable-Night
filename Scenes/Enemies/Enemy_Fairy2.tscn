@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bw6dyilmm1ag3"]
 
 [ext_resource type="Script" uid="uid://lcwf42x4h4d" path="res://Scripts/Enemies/enemy_fairy.gd" id="1_yomqw"]
+[ext_resource type="Script" uid="uid://b3hhbpshd0f4w" path="res://Scripts/Components/collectableManager(legado).gd" id="2_jdcs2"]
 [ext_resource type="Texture2D" uid="uid://deb8edrmw4rv0" path="res://Sprites/fadinha sprite touhou-Sheet.png" id="2_yomqw"]
 [ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="3_40cyv"]
 [ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="4_xy51r"]
@@ -58,6 +59,12 @@ size = Vector2(16, 16)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_yomqw")
+MAX_SPEED = null
+MAX_ACCELERATION = null
+
+[node name="CollectableManagerComponent" type="Node2D" parent="." unique_id=1076824252]
+script = ExtResource("2_jdcs2")
+metadata/_custom_type_script = "uid://b3hhbpshd0f4w"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2047981984]
 sprite_frames = SubResource("SpriteFrames_cdnfm")

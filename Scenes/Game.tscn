@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b87iqj14agf4f"]
 
+[ext_resource type="PackedScene" uid="uid://buu37fvvuwnv6" path="res://Scenes/Components/collectableManager(legado).tscn" id="1_2irst"]
 [ext_resource type="PackedScene" uid="uid://xlwffpmjt6iv" path="res://Scenes/Player.tscn" id="1_y700s"]
 [ext_resource type="AudioStream" uid="uid://eydt6tn3a6ja" path="res://Sounds/Music/locked girl.mp3" id="3_j5yw3"]
 [ext_resource type="Script" uid="uid://k5ofdchbi8r7" path="res://Scripts/enemy_spawn_manager.gd" id="3_kldst"]
@@ -56,7 +57,7 @@ anchors_preset = 0
 
 [node name="Player" parent="." unique_id=1634487443 instance=ExtResource("1_y700s")]
 z_index = 1
-position = Vector2(128, 192)
+position = Vector2(128, 200)
 
 [node name="LockedGirl Soundtrack" type="AudioStreamPlayer" parent="." unique_id=166022374]
 stream = ExtResource("3_j5yw3")
@@ -83,6 +84,10 @@ libraries/ = SubResource("AnimationLibrary_7lihs")
 
 [node name="Panel" type="Panel" parent="." unique_id=1057136605]
 layout_mode = 0
-offset_right = 256.0
-offset_bottom = 256.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 255.0
+offset_bottom = 257.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2irst")
+
+[node name="PointCollectionComponent" parent="." unique_id=495764231 instance=ExtResource("1_2irst")]

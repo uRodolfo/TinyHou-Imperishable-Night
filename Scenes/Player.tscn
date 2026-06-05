@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b6j556kixxgjp" path="res://Scripts/Player/player_animation.gd" id="4_dewec"]
 [ext_resource type="PackedScene" uid="uid://bnwuurv5g2wg1" path="res://Scenes/Components/health_component.tscn" id="5_5ixxa"]
 [ext_resource type="PackedScene" uid="uid://uoo0wa836ysf" path="res://Scenes/Components/hitbox_component.tscn" id="6_nn08x"]
+[ext_resource type="PackedScene" uid="uid://buu37fvvuwnv6" path="res://Scenes/Components/collectableManager(legado).tscn" id="8_bhhdu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_megsn"]
 atlas = ExtResource("3_52ee3")
@@ -180,6 +181,8 @@ health_component = NodePath("../HealthComponent")
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxComponent" unique_id=1405953714]
 modulate = Color(0, 0, 0, 1)
 shape = SubResource("CircleShape2D_fnolj")
+
+[node name="PointCollectionComponent" parent="." unique_id=495764231 instance=ExtResource("8_bhhdu")]
 
 [connection signal="timeout" from="PlayerShootingComponent/Shootspeed" to="PlayerShootingComponent" method="_on_shootspeed_timeout"]
 [connection signal="timeout" from="ShootKeyInterval" to="." method="_on_shoot_key_interval_timeout"]

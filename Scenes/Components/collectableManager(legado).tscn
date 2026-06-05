@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://buu37fvvuwnv6"]
+
+[ext_resource type="Script" uid="uid://b3hhbpshd0f4w" path="res://Scripts/Components/collectableManager(legado).gd" id="1_tivrm"]
+
+[node name="PointCollectionComponent" type="Node2D" unique_id=495764231]
+script = ExtResource("1_tivrm")

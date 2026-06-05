@@ -23,6 +23,10 @@ config/icon="res://Sprites/icon.svg"
 
 buses/default_bus_layout="uid://dd616rglr2f03"
 
+[autoload]
+
+global_point_manager="*uid://bticfv1v0rxd4"
+
 [display]
 
 window/size/viewport_width=256
