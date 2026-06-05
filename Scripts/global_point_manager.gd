@@ -15,5 +15,5 @@ func spawn_point(posicao: Vector2):
 	get_tree().current_scene.add_child(point)
 
 func _on_point_colided():
-	add_points(10)
+	add_points(100)
 	print(points)

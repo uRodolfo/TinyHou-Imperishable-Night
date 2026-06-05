@@ -2,7 +2,25 @@
 
 extends HealthComponent
 
+@onready var _iframes_timer : Timer = $IFramesTimer
+@onready var _iframes_blink_interval : Timer = $IFramesBlinkInterval
+
+var invincible : bool = false
+
 func damage(damage: float):
-	super(damage)                   #Chamar o método da classe herdada
+	if !invincible:                     #Checar se o player não está invencível (iframes) para aplicar o dano
+		super(damage)                   #Chamar o método da classe herdada
+		global_point_manager.player_health = health     #Atualizar variável global
 	
-	global_point_manager.player_health = health
+		#Aplicar IFrames
+		invincible = true
+		_iframes_timer.start()
+		_iframes_blink_interval.start()
+
+func _on_i_frames_timer_timeout() -> void:
+	invincible = false
+	_iframes_blink_interval.stop()
+	owner.visible = true
+
+func _on_i_frames_blink_interval_timeout() -> void:
+	owner.visible = !owner.visible
