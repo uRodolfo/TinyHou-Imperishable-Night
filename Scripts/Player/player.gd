@@ -13,6 +13,9 @@ var direction = Vector2.ZERO
 @onready var _shoot_key_interval := $ShootKeyInterval #Tempo para segurar o botão para alternar o modo de tiro
 @onready var health_component := $HealthComponent #Componente que faz a lógica de vida
 
+func _ready() -> void:
+	handle_update_HUD()
+
 func _physics_process(delta):
 	velocity = direction.normalized() * speed
 	move_and_slide()
@@ -55,3 +58,7 @@ func handle_bomb():
 func handle_shooting():
 	if _player_shooting.is_shooting and _player_shooting.canshoot:
 		_player_shooting.shoot()
+
+func handle_update_HUD():
+	global_point_manager.player_health = health_component.health
+	global_point_manager.player_bombs = _player_shooting.bombs_qtd
