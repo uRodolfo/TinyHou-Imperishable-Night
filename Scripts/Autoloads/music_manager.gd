@@ -7,7 +7,7 @@ func _ready():
 	add_child(music_player)
 	
 	# Define o bus "music"
-	music_player.bus = "Music"
+	music_player.bus = &"Music"
 	
 	# Carrega e toca a música (substitua pelo caminho correto)
 	music_player.stream = preload("uid://bi5oxradmdbh6")

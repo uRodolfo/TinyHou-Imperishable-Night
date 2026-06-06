@@ -7,7 +7,6 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if _player:
-		print("Vida atual: ", _player.health_component.health)  # Veja o valor
 		if _player.health_component.health <= 0 or Input.is_action_just_pressed("Reset"):
 			handle_gameover()
 

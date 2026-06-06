@@ -323,6 +323,7 @@ position = Vector2(80, 192)
 [node name="LockedGirl Soundtrack" type="AudioStreamPlayer" parent="." unique_id=166022374]
 stream = ExtResource("3_j5yw3")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="ArenaBounds" type="StaticBody2D" parent="." unique_id=1315510533]
